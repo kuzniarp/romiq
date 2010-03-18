@@ -1,0 +1,25 @@
+html
+{
+	background:#f0f0f0;
+}
+body
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+h3
+{
+	font-weight:normal;
+	font-size:16px;
+}
+div
+{
+	text-align:center;
+	width:400px;
+	margin:100px auto;
+	border:1px solid #ccc;
+	background:#fbfbfb;
+	padding:10px;
+	-moz-border-radius:7px;
+	-webkit-border-radius:7px;
+}

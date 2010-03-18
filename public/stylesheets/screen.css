@@ -1,0 +1,362 @@
+/*
+Theme Name: Luxury by Cudazi
+Theme URI: http://www.curtziegler.com/
+Description: 
+Version: 1.0
+Author: Curt Ziegler
+Author URI: http://www.curtziegler.com/
+*/
+
+
+
+html, body, form,
+h1, h2, h3, h4, h5, h6,
+p, img, a
+{
+	margin:0;
+	padding:0;
+	outline:0;
+	border:0;
+}
+
+body, .standardForm .textarea
+{
+	font-family:Arial, Helvetica, sans-serif;
+}
+body
+{
+	background:#333;
+	font-size:0.8em;
+	color:#666666;
+	line-height:175%;
+}
+#main
+{
+	background:#f7f7f7 url(../images/body_gradiant.jpg) repeat-x top left;
+	margin-top:10px;
+	border-top:1px solid #fff;
+	border-bottom:1px solid #fff;
+}
+p, h1, h2, h3, h4, h5, h6
+{
+	padding:0 0 20px 0;
+}
+h1, h2, h3, h4, h5, h6
+{
+	color:#333;
+	font-weight:normal;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
+{
+	text-decoration:none;
+}
+UL
+{
+	padding:0 0 0 20px;
+	margin:0 0 20px 0;
+}
+UL LI
+{
+	padding-top:5px;
+	padding-bottom:5px;
+}
+h1
+{}
+h2 { font-size:2.3em; }
+h3 { font-size:1.9em; }
+h4 { font-size:1.8em; }
+h5 { font-size:1.7em; }
+h6 { font-size:1.5em; }
+
+A
+{
+	color:#666;
+}
+A:hover
+{
+	color:#333;
+	background-position:1px 17px;
+}
+A:active
+{
+	color:#000;
+}
+#header
+{
+	padding:20px 0 16px 0;
+}
+.ads LI a
+{
+	display:block;
+	text-align:center;
+	margin:0 0 10px 0;
+	padding:5px 0;
+	background:#fff;
+}
+.post .postmeta
+{
+	padding:0;
+}
+A.more-link
+{
+	text-decoration:none;
+	padding:5px 10px;
+	background:#f0f0f0;
+	border:1px solid #ccc;
+}
+.block a
+{
+	padding:3px 5px;
+	text-decoration:none;
+}
+small.block a.on,
+.block a:hover
+{
+	background:#d4d4d4;
+	color:#fff;
+}
+.widget-area
+{
+	padding:20px 0;
+}
+#footer
+{
+	background:#333;
+	color:#888;
+	padding:15px 0 60px 0;
+	font-size:0.85em;
+}
+#footer A
+{
+	color:#999;
+}
+#main .container_12
+{
+	padding-bottom:40px;
+}
+UL.latest-posts LI,
+UL.latest-posts LI A
+{
+	display:block;
+}
+UL.latest-posts LI A
+{
+	text-decoration:none;
+}
+UL.latest-posts p
+{
+	padding-bottom:0;
+}	
+.latest-posts span
+{
+	background:#d4d4d4;
+	padding:1px 4px;
+	font-size:0.8em;
+	margin-right:10px;
+	color:#fff;
+}
+UL.social LI A
+{
+	margin:0 1px;
+}
+.shadow,
+.ads LI a
+{
+	-webkit-box-shadow: 0px 0px 2px #ddd;
+	-moz-box-shadow: 0px 0px 2px #ddd;
+}
+.hovershadow:hover,
+.ads LI a:hover
+{
+	-webkit-box-shadow: 0px 0px 6px #ccc;
+	-moz-box-shadow: 0px 0px 6px #ccc;
+}
+.shadow-large
+{
+	-webkit-box-shadow: 0px 0px 4px #444;
+	-moz-box-shadow: 0px 0px 4px #444;
+}
+
+hr
+{
+	background:#f7f7f7;
+	border:0;
+	border-bottom:1px solid #ddd;
+	margin:20px 0;
+	height:2px;
+}
+hr.nopad
+{
+	padding:0;
+	margin:0;
+}
+.promo-container
+{
+	margin-bottom:40px;
+}
+#promo-nav
+{
+	background:url(../images/promo_nav_bg.jpg) repeat-x bottom left;
+	border:1px solid #dcdcdc;
+	border-top:0;
+	padding:12px 10px 10px 10px;
+}
+#promo-nav UL LI a
+{
+	border:1px solid #d4d4d4;
+	background:#fff;
+	text-indent:-9999px;
+	width:8px;
+	height:8px;
+	display:block;
+	float:left;
+	margin-left:7px;
+}
+#promo-nav UL LI a:hover,
+#promo-nav .activeSlide
+{
+	background:#d4d4d4;
+}
+#promo-nav UL LI a:active
+{
+	background:#333;
+}
+
+.toolbox-vertical
+{
+	margin-bottom:5px;	
+}
+.toolbox-horizontal #searchform
+{
+	margin-top:46px;
+}
+#searchform form
+{
+	background:#f6f6f6;
+	border:1px solid #e8e8e8;
+	width:220px;
+}
+#searchform #s
+{
+	font-size:0.7em;
+	padding:6px 0 4px 10px;
+	color:#b9b9b9;
+	text-transform:uppercase;
+	text-align:left;
+	width:175px;
+}
+#searchform #s,
+#searchform #submit
+{
+	background:transparent;
+	border:0;
+}
+
+.standardForm .field
+{
+	padding:0 0 10px 0;
+}
+.standardForm label
+{
+	display:block;
+	font-weight:bold;
+	font-size:1.3em;
+}
+.standardForm .textbox,
+.standardForm .button,
+.standardForm .textarea
+{
+	border:1px solid #ccc;
+	-moz-border-radius:3px;
+	color:#999;
+	font-weight:bold;
+}
+.standardForm .textbox
+{
+	width:350px;
+	padding:8px 6px;
+}
+.standardForm .button
+{
+	padding:5px 10px;
+	background:#f0f0f0;
+	border:1px solid #ccc;
+}
+.standardForm .textarea
+{
+	font-size:0.85em;
+	width:450px;
+	height:150px;
+	padding:8px 6px;
+}
+.message
+{
+	padding:5px 10px;
+	margin:0 0 20px 0;
+	border:1px solid #fff;
+	font-size:0.85em;
+	font-weight:bold;
+	cursor:pointer;
+}
+.warning
+{
+	background:#f5d2c2;
+	border-color:#d0a28d;
+}
+.success
+{
+	background:#d1dfbf;
+	border-color:#a4c37b;
+}
+UL.clean, UL.clean LI
+{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	display:inline;
+}
+.alternate, .hidden
+{
+	display:none;
+}
+.right
+{
+	float:right;
+}
+.left
+{
+	float:left;
+}
+
+
+/* Used only for preview of grid */
+.demo-grid p { 
+	border:1px solid #ccc; 
+	padding:10px; 
+	margin:5px 0; 
+	background:#f0f0f0;
+}
+
+
+
+/* Clearfix */
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
