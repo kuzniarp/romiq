@@ -15,8 +15,10 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   private
   def authenticate
-    authenticate_or_request_with_http_basic do |id, password| 
-      id == "romi" && password == "beta"
+    if RAILS_ENV=="production"
+      authenticate_or_request_with_http_basic do |id, password| 
+        id == "romi" && password == "beta"
+      end
     end
   end
 end
