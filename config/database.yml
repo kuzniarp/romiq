@@ -9,8 +9,8 @@
 development:
   adapter: mysql
   database: romiq_development
-  username: romiquser
-  password: romiqpass
+  username: railsuser
+  password: railspass
   host: localhost
   socket: /var/run/mysqld/mysqld.sock
 
