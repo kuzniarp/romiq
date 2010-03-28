@@ -73,7 +73,7 @@
       <div id="login-content">
 	
 	<% form_tag admin_login_path do %>
-	  <% if flash[:notice].present? %>
+	  <% if flash[:login_notice].present? %>
 	  <div class="notification information png_bg">
 	    <div>
 	      <%= flash[:notice] %>

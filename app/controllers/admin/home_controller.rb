@@ -13,7 +13,7 @@ class Admin::HomeController < ApplicationController
         session[:user_id] = true
         redirect_to admin_root_path
       else
-        flash[:notice] = "Niepoprawne dane logowania."
+        flash[:login_notice] = "Niepoprawne dane logowania."
       end
     end
   end
