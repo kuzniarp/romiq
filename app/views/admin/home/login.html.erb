@@ -6,7 +6,7 @@
     
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     
-    <title>Simpla Admin | Sign In</title>
+    <title>Admin</title>
     
     <!--                       CSS                       -->
     
@@ -65,29 +65,29 @@
     <div id="login-wrapper" class="png_bg">
       <div id="login-top">
 	
-	<h1>Simpla Admin</h1>
+	<h1>Admin</h1>
 	<!-- Logo (221px width) -->
-	<img id="logo" src="/images/logo.png" alt="Simpla Admin logo" />
+	<img id="logo" src="/images/logo.png" alt="Admin" />
       </div> <!-- End #logn-top -->
       
       <div id="login-content">
 	
-	<form action="index.html">
-	  
-	  <div class="notification information png_bg" style="display:none;">
+	<% form_tag admin_login_path do %>
+	  <% if flash[:notice].present? %>
+	  <div class="notification information png_bg">
 	    <div>
-	      Just click "Sign In". No password needed.
+	      <%= flash[:notice] %>
 	    </div>
 	  </div>
-	  
+	  <% end %>
 	  <p>
 	    <label>Login</label>
-	    <input class="text-input" type="text" />
+	    <input class="text-input" type="text" name="login" />
 	  </p>
 	  <div class="clear"></div>
 	  <p>
 	    <label>Hasło</label>
-	    <input class="text-input" type="password" />
+	    <input class="text-input" type="password" name="password" />
 	  </p>
 	  <div class="clear"></div>
 	  <p id="remember-password" style="display:none;">
@@ -98,7 +98,7 @@
 	    <input class="button" type="submit" value="Zaloguj" />
 	  </p>
 	  
-	</form>
+	<% end %>
       </div> <!-- End #login-content -->
       
     </div> <!-- End #login-wrapper -->
