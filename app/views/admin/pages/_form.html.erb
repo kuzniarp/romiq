@@ -1,0 +1,39 @@
+<% form_for([:admin, @page]) do |f| %>
+  <%= f.error_messages %>
+  
+  <fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
+    
+    <p>
+      <label>Tytuł</label>
+      <%= f.text_field :name, :class => "text-input small-input" %>
+    </p>
+
+    <p>
+      <label>Zawartość</label>
+      <%= f.text_area :body, :class => "text-input textarea wysiwyg", :cols => 79, :rows => 15 %>
+    </p>
+        
+    <p>
+      <label>Status</label>
+      <%= f.check_box :status %> Aktywna?
+    </p>
+        
+    <p>
+      <label>Typ</label>              
+      <select name="dropdown" class="small-input">
+	<option value="option1">Option 1</option>
+	<option value="option2">Option 2</option>
+	<option value="option3">Option 3</option>
+	<option value="option4">Option 4</option>
+      </select> 
+    </p>
+        
+    <p>
+      <input class="button" type="submit" value="Zapisz" />
+    </p>
+    
+  </fieldset>
+  
+  <div class="clear"></div><!-- End .clear -->
+  
+<% end %>
