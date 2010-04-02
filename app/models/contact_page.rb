@@ -1,0 +1,2 @@
+class ContactPage < Page
+end

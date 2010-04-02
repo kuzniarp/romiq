@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100327234425) do
+ActiveRecord::Schema.define(:version => 20100401141106) do
 
   create_table "pages", :force => true do |t|
     t.string   "name"
@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20100327234425) do
     t.integer  "item_order"
     t.integer  "parent_id"
     t.string   "permalink"
-    t.boolean  "status"
+    t.boolean  "status",     :default => false
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"

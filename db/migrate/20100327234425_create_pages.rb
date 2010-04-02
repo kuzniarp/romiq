@@ -6,7 +6,7 @@ class CreatePages < ActiveRecord::Migration
       t.integer :item_order
       t.integer :parent_id
       t.string :permalink
-      t.boolean :status
+      t.boolean :status, :default => 0
       t.string :type
 
       t.timestamps

@@ -1,4 +1,5 @@
-<% form_for([:admin, @page]) do |f| %>
+<% form_for([:admin,  @page]) do |f| %>
+<% fields_for :page do |f| %>
   <%= f.error_messages %>
   
   <fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
@@ -17,17 +18,7 @@
       <label>Status</label>
       <%= f.check_box :status %> Aktywna?
     </p>
-        
-    <p>
-      <label>Typ</label>              
-      <select name="dropdown" class="small-input">
-	<option value="option1">Option 1</option>
-	<option value="option2">Option 2</option>
-	<option value="option3">Option 3</option>
-	<option value="option4">Option 4</option>
-      </select> 
-    </p>
-        
+                
     <p>
       <input class="button" type="submit" value="Zapisz" />
     </p>
@@ -35,5 +26,5 @@
   </fieldset>
   
   <div class="clear"></div><!-- End .clear -->
-  
+<% end %>  
 <% end %>

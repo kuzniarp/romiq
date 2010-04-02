@@ -25,7 +25,7 @@ class Admin::PagesController < ApplicationController
     respond_to do |format|
       if @page.save
         flash[:notice] = 'Strona została zapisana.'
-        format.html { redirect_to([:admin, @page]) }
+        format.html { redirect_to(admin_pages_path) }
       else
         format.html { render :action => "new" }
       end
@@ -38,7 +38,7 @@ class Admin::PagesController < ApplicationController
     respond_to do |format|
       if @page.update_attributes(params[:page])
         flash[:notice] = 'Strona została zaktualizowana'
-        format.html { redirect_to([:admin, @page]) }
+        format.html { redirect_to(admin_pages_path) }
       else
         format.html { render :action => "edit" }
       end
@@ -50,7 +50,7 @@ class Admin::PagesController < ApplicationController
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to(admin_pages_url) }
+      format.html { redirect_to(admin_pages_path) }
     end
   end
 end

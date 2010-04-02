@@ -37,6 +37,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.namespace :admin do |admin|
     admin.resources :pages
+    admin.resources :home_pages, :controller => "pages"
+    admin.resources :static_pages, :controller => "pages"
+    admin.resources :contact_pages, :controller => "pages"
+    admin.resources :portfolios, :controller => "pages"
   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
