@@ -8,7 +8,7 @@ class Admin::PagesController < ApplicationController
   end
 
   def show
-    @page = Page.find(params[:id])
+    @page = Page.find_by_permalink(params[:id])
   end
 
   def new
@@ -16,7 +16,7 @@ class Admin::PagesController < ApplicationController
   end
 
   def edit
-    @page = Page.find(params[:id])
+    @page = Page.find_by_permalink(params[:id])
   end
 
   def create
@@ -33,7 +33,7 @@ class Admin::PagesController < ApplicationController
   end
 
   def update
-    @page = Page.find(params[:id])
+    @page = Page.find_by_permalink(params[:id])
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
@@ -46,7 +46,7 @@ class Admin::PagesController < ApplicationController
   end
 
   def destroy
-    @page = Page.find(params[:id])
+    @page = Page.find_by_permalink(params[:id])
     @page.destroy
 
     respond_to do |format|

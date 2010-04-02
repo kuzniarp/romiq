@@ -35,19 +35,9 @@
 	  <div class="grid_12">
 	    <div class="menu-horizontal clearfix">
 	      <ul class="sf-menu">
-		<li><a href="#">Główna</a></li>
-		<li><a href="#">Firma</a></li>
-		<li><a href="#">Usługi</a></li>
-		<li class="current_page_item"><a href="#">Portfolio</a>
-		  <ul>
-		    <li><a href="#">Realizacja 1</a></li>
-		    <li><a href="#">Realizacja 2</a></li>
-		    <li><a href="#">Realizacja 3</a></li>
-		    <li><a href="#">Realizacja 4</a></li>
-		  </ul>
-		</li>
-		<li><a href="#">Kontakt</a></li>	
-	      </ul>
+		<% for page in Page.menu_pages do %>
+		  <li><%= link_to page.name, page_path(page) %></li>
+		<% end %>
 	    </div><!--//menu horizontal-->
 	  </div><!--//grid_12-->
 	  

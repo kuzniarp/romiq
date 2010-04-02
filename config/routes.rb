@@ -43,6 +43,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :portfolios, :controller => "pages"
   end
 
+  map.page '/:permalink', :controller => "pages", :action => "show",  :conditions => {:parent_id => nil}
+
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "home"
 
