@@ -1,7 +1,6 @@
 class CreatePageInstances < ActiveRecord::Migration
   def self.up
-    hp=HomePage.create(:name => "Home", :item_order => 0)
-    hp.update_attribute(:permalink, "")
+    HomePage.create(:name => "Home", :item_order => 0)
     StaticPage.create(:name => "O nas", :item_order => 1)
     StaticPage.create(:name => "Oferta", :item_order => 2)
     Portfolio.create(:name => "Portfolio", :item_order => 3)
