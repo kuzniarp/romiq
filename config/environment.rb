@@ -55,7 +55,7 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_romiq_session',
+    :key => '_romiq_session',
     :secret      => 'c5f9be524f1a5e57af0a263309940254a6c5e8ccbbee6068248d57ffb1883501a91602605700578c6326d58baae8a112518eafc4719ce56bfad2b659caf193d5'
   }
 
