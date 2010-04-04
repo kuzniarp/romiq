@@ -43,10 +43,10 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :portfolios, :controller => "pages"
   end
 
-  map.page '/:id', :controller => "pages", :action => "show",  :conditions => {:parent_id => nil}
+  map.page '/:id', :controller => "pages", :action => "show", :conditions => {:parent_id => nil}
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "home"
+  map.root :controller => "pages", :action => "show"
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,0 +1,72 @@
+<div class="grid_8">
+
+  <h2><%= h @page.header %></h2>
+
+  <%= h @page.body %>
+  
+  <!--
+
+  <p class="message warning">Please fill out all fields and hit submit.</p>
+
+  <p class="message success">Message Sent!</p>
+
+  -->
+
+
+  <h3>Wyślij nam wiadomość</h3>
+
+
+  <form method="post" action="sendmail.php" class="standardForm">
+
+    <div class="field">
+
+      <label for="name">Podaj swoje imię</label>
+
+      <input type="text" name="name" id="name" class="textbox shadow" />
+
+    </div>
+
+    <div class="field">
+
+      <label for="email">Twój email</label>
+
+      <input type="text" name="email" id="email" class="textbox shadow" />
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="message">Wiadomość</label>
+
+      <textarea name="message" id="message" class="textarea shadow"></textarea>
+
+    </div>
+
+    <div class="field hidden">
+
+      <input type="text" name="e_mail" id="e_mail" class="textbox shadow" />
+
+    </div>
+
+    <div class="field">
+
+      <input type="submit" name="submit" id="submit" value="Send Message" class="button shadow hovershadow" />
+
+    </div>
+
+  </form>
+
+</div><!--//grid_12-->
+
+<div class="grid_4">
+
+  <h3>Jak do nas trafić</h3>
+
+  <iframe class="shadow hovershadow" width="300" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?ie=UTF8&amp;hq=&amp;hnear=3012+7th+Ave+N,+Moorhead,+Clay,+Minnesota+56560&amp;ll=44.976502,-93.272542&amp;spn=0.002656,0.00236&amp;z=17&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?ie=UTF8&amp;hq=&amp;hnear=3012+7th+Ave+N,+Moorhead,+Clay,+Minnesota+56560&amp;ll=44.976502,-93.272542&amp;spn=0.002656,0.00236&amp;z=17&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+
+  <hr />
+
+  <p><p>
+
+</div><!--//grid_2-->

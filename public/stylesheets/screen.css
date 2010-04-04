@@ -83,7 +83,7 @@ A:active
 }
 #header
 {
-	padding:20px 0 16px 0;
+	padding:20px 0 0 0;
 }
 .ads LI a
 {
@@ -130,7 +130,7 @@ small.block a.on,
 {
 	color:#999;
 }
-#main .container_12
+#main #content
 {
 	padding-bottom:40px;
 }

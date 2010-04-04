@@ -10,6 +10,12 @@
     </p>
 
     <p>
+      <label>Nagłówek strony</label>
+      <%= f.text_field :header, :class => "text-input small-input" %>
+      <br /><small>Pozostaw pusty, jeśli ma być taki sam jak Tytuł.</small>
+    </p>
+
+    <p>
       <label>Zawartość</label>
       <%= f.text_area :body, :class => "text-input textarea wysiwyg", :cols => 79, :rows => 15 %>
     </p>
