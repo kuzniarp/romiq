@@ -351,7 +351,7 @@ ul.content-box-tabs li a.current {
                 border-bottom: 1px solid #ddd;
                 }
                 
-#main-content tbody tr {
+tbody tr {
                 background: #fff;
                 }
               
@@ -359,8 +359,8 @@ ul.content-box-tabs li a.current {
                 background: #f3f3f3;
                 }
                 
-#main-content table td,
-#main-content table th {
+table td,
+table th {
                 padding: 10px;
                 line-height: 1.3em;
                 }        

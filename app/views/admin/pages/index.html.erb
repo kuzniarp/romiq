@@ -55,7 +55,7 @@
 	  <% @pages.each do |page| %>
 	  <tr <%= cycle('class="alt-row"', '') %>>
 	    <td><%=h page.name %></td>
-	    <td><%=h truncate(page.body, :length => 100) %></td>
+	    <td><%= truncate(strip_tags(page.body), :length => 100) %></td>
 	    <td><%=h page.status.to_s(:activation) %></td>
 	    <td><%=h page.type %></td>
 	    <td>
