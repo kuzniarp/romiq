@@ -1,5 +1,7 @@
 class Page < ActiveRecord::Base
 
+  acts_as_tree :order => "item_order"
+
   named_scope :active, :conditions => {:status => true}
 
   before_save :update_header
