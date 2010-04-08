@@ -1,5 +1,7 @@
 class Page < ActiveRecord::Base
 
+  has_permalink :name
+
   acts_as_tree :order => "item_order"
 
   named_scope :active, :conditions => {:status => true}
@@ -11,7 +13,7 @@ class Page < ActiveRecord::Base
   end
 
   def self.menu_pages
-    active(:conditions => {:parent_id => nil})
+    active.all(:conditions => {:parent_id => nil})
   end
 
   def self.home_page

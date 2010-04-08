@@ -25,7 +25,7 @@
 	    <th>Zawartość</th>
 	    <th>Status</th>
 	    <th>Typ</th>
-	    <th>&nbsp;</th>
+	    <th style="width:70px;">&nbsp;</th>
 	  </tr>
 	  
 	</thead>
@@ -54,15 +54,30 @@
 
 	  <% @pages.each do |page| %>
 	  <tr <%= cycle('class="alt-row"', '') %>>
-	    <td><%=h page.name %></td>
+	    <td class="name"><%= link_to page.name, edit_admin_page_path(page) %></td>
 	    <td><%= truncate(strip_tags(page.body), :length => 100) %></td>
 	    <td><%=h page.status.to_s(:activation) %></td>
 	    <td><%=h page.type %></td>
 	    <td>
 	      <%= link_to '<img src="/images/icons/pencil.png" alt="Edytuj" />', edit_admin_page_path(page) %>
 	      <%= link_to '<img src="/images/icons/cross.png" alt="Usuń" />', [:admin, page], :confirm => 'Jesteś pewien?', :method => :delete %>
+	      <%= link_to '<img src="/images/icons/add_page.png" alt="Dodaj podstronę" />', new_admin_page_path(:parent_id => page.id) %>
 	    </td>
 	  </tr>
+	  <% unless page.children.empty? %>
+	    <% page.children.each do |child| %>	
+	    <tr class="child">
+	      <td class="name"><%= link_to child.name, edit_admin_page_path(child) %></td>
+	      <td><%= truncate(strip_tags(child.body), :length => 100) %></td>
+	      <td><%=h child.status.to_s(:activation) %></td>
+	      <td><%=h child.type %></td>
+	      <td>
+		<%= link_to '<img src="/images/icons/pencil.png" alt="Edytuj" />', edit_admin_page_path(child) %>
+		<%= link_to '<img src="/images/icons/cross.png" alt="Usuń" />', [:admin, child], :confirm => 'Jesteś pewien?', :method => :delete %>
+	      </td>	      
+	    </tr>
+	    <% end %>
+	  <% end %>	  
 	  <% end %>
 	</tbody>
 	

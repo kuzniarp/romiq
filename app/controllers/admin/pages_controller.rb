@@ -4,7 +4,7 @@ class Admin::PagesController < ApplicationController
   layout "admin"
 
   def index
-    @pages = Page.all
+    @pages = Page.menu_pages
   end
 
   def show
@@ -20,8 +20,9 @@ class Admin::PagesController < ApplicationController
   end
 
   def create
-    @page = Page.new(params[:page])
-
+    page_class = params[:page][:type].constantize
+    @page = page_class.new(params[:page])
+    
     respond_to do |format|
       if @page.save
         flash[:notice] = 'Strona została zapisana.'
@@ -34,7 +35,7 @@ class Admin::PagesController < ApplicationController
 
   def update
     @page = Page.find_by_permalink(params[:id])
-
+    
     respond_to do |format|
       if @page.update_attributes(params[:page])
         flash[:notice] = 'Strona została zaktualizowana'

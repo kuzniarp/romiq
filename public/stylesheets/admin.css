@@ -358,13 +358,22 @@ tbody tr {
 #main-content tbody tr.alt-row {
                 background: #f3f3f3;
                 }
+
+#main-content tbody tr.child td.name{
+    padding-left:50px;
+    background: url('../images/icons/page.png') no-repeat scroll 20px 5px;
+}
                 
 table td,
 table th {
-                padding: 10px;
+                padding: 10px 10px 10px 30px;
                 line-height: 1.3em;
-                }        
-				
+}        
+
+#main-content table td.name {
+    background: url('../images/icons/page.png') no-repeat scroll 0 5px;
+}
+
 #main-content table tfoot td .bulk-actions {
                 padding: 15px 0 5px 0;
                 } 
