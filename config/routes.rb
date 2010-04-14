@@ -36,7 +36,7 @@ ActionController::Routing::Routes.draw do |map|
   map.admin_logout "/admin/logout", :controller => "admin/home", :action => "logout"
 
   map.namespace :admin do |admin|
-    admin.resources :pages
+    admin.resources :pages, :collection => { :sort => :put }
     admin.resources :home_pages, :controller => "pages"
     admin.resources :static_pages, :controller => "pages"
     admin.resources :contact_pages, :controller => "pages"

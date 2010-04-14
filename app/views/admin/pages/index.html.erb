@@ -53,7 +53,7 @@
 	<tbody>
 
 	  <% @pages.each do |page| %>
-	  <tr <%= cycle('class="alt-row"', '') %>>
+	  <tr class="parent">
 	    <td class="name"><%= link_to page.name, edit_admin_page_path(page) %></td>
 	    <td><%= truncate(strip_tags(page.body), :length => 100) %></td>
 	    <td><%=h page.status.to_s(:activation) %></td>
@@ -66,7 +66,7 @@
 	  </tr>
 	  <% unless page.children.empty? %>
 	    <% page.children.each do |child| %>	
-	    <tr class="child">
+	    <tr class="child" id="page_<%= child.id %>">
 	      <td class="name"><%= link_to child.name, edit_admin_page_path(child) %></td>
 	      <td><%= truncate(strip_tags(child.body), :length => 100) %></td>
 	      <td><%=h child.status.to_s(:activation) %></td>
@@ -75,9 +75,9 @@
 		<%= link_to '<img src="/images/icons/pencil.png" alt="Edytuj" />', edit_admin_page_path(child) %>
 		<%= link_to '<img src="/images/icons/cross.png" alt="Usuń" />', [:admin, child], :confirm => 'Jesteś pewien?', :method => :delete %>
 	      </td>	      
-	    </tr>
+	    </tr>	    	    
 	    <% end %>
-	  <% end %>	  
+	  <% end %>
 	  <% end %>
 	</tbody>
 	
@@ -93,3 +93,26 @@
   </div> <!-- End .content-box-content -->
   
 </div> <!-- End .content-box -->
+
+<% javascript_tag do %>
+  $('#tab1').sortable(
+  {
+    cursor: 'crosshair',
+    opacity: 0.8,
+    scroll: true,
+    items:'tr.child', 
+    containment:'parent', 
+    axis:'y',
+    update: function() 
+            {
+              $.post('/admin/pages/sort', 
+                     '_method=put&authenticity_token='+window._token+'&'+$(this).sortable('serialize'),
+                     function()
+                     {
+                       $('tbody tr').removeClass("alt-row");$('tbody tr:even').addClass("alt-row");
+                     }
+                    );
+            }
+  });
+ <% end %>
+

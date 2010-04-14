@@ -20,6 +20,13 @@ class Page < ActiveRecord::Base
     HomePage.first || HomePage.new
   end
 
+  def self.order(ids)
+    update_all(
+               ['item_order = FIND_IN_SET(id, ?)', ids.join(',')],
+               { :id => ids }
+               )
+  end
+  
   private
 
   def update_header

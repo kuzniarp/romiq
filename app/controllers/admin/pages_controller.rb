@@ -54,4 +54,10 @@ class Admin::PagesController < ApplicationController
       format.html { redirect_to(admin_pages_path) }
     end
   end
+
+  def sort
+    order = params[:page]
+    Page.order(order)
+    render :text => order.inspect
+  end
 end
