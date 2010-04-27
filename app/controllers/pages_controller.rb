@@ -1,8 +1,17 @@
+# -*- coding: utf-8 -*-
 class PagesController < ApplicationController
   def show
     @page = params[:id].present? ? Page.find_by_permalink(params[:id]) : Page.home_page
     set_map if @page.is_a?(ContactPage)
     render :action => "show_#{@page.class.to_s.underscore}"
+  end
+
+  def sendmail
+    if Mailer.deliver_mail params[:subject], params[:email], params[:message]
+      render :text => "Wiadomość została wysłana."
+    else
+      render :text => "Wystąpił problem z wysłaniem wiadomości. Spróbuj ponownie później."
+    end
   end
 
   private

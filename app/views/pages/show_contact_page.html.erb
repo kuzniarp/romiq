@@ -7,29 +7,27 @@
   <!--
 
   <p class="message warning">Please fill out all fields and hit submit.</p>
-
-  <p class="message success">Message Sent!</p>
-
+  <p class="message success">Ok</p>
   -->
 
 
   <h3>Wyślij nam wiadomość</h3>
 
-  <% form_tag "/pages/sendmail", :class => "standardForm" do %>
-
-    <div class="field">
-
-      <label for="name">Podaj swoje imię</label>
-
-      <input type="text" name="name" id="name" class="textbox shadow" />
-
-    </div>
+  <% form_remote_tag :url => {:action => "sendmail"}, :update => "notice", :html => {:class => "standardForm"} do %>
 
     <div class="field">
 
       <label for="email">Twój email</label>
 
       <input type="text" name="email" id="email" class="textbox shadow" />
+
+    </div>
+
+    <div class="field">
+
+      <label for="subject">Temat</label>
+
+      <input type="text" name="subject" id="subject" class="textbox shadow" />
 
     </div>
 
@@ -51,6 +49,8 @@
     <div class="field">
 
       <input type="submit" name="submit" id="submit" value="Wyślij" class="button shadow hovershadow" />
+      
+      <div id="notice" style="color:#44AA44"></div>
 
     </div>
   
