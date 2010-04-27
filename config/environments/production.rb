@@ -22,3 +22,4 @@ config.action_controller.perform_caching             = true
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
+GOOGLE_APPLICATION_ID = "ABQIAAAAtE2XRci6LgHBnXoLlDKakxQCvCjXRt9AHlI8kud2CBjwj4B8YBRlt6_FsqfeC78_cU-d-vu7aK3YTw"

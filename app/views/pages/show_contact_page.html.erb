@@ -15,8 +15,7 @@
 
   <h3>Wyślij nam wiadomość</h3>
 
-
-  <form method="post" action="sendmail.php" class="standardForm">
+  <% form_tag "/pages/sendmail", :class => "standardForm" do %>
 
     <div class="field">
 
@@ -54,8 +53,8 @@
       <input type="submit" name="submit" id="submit" value="Wyślij" class="button shadow hovershadow" />
 
     </div>
-
-  </form>
+  
+  <% end %>
 
 </div><!--//grid_12-->
 
@@ -63,8 +62,11 @@
 
   <h3>Jak do nas trafić</h3>
 
-  <iframe class="shadow hovershadow" width="300" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?ie=UTF8&amp;hq=&amp;hnear=3012+7th+Ave+N,+Moorhead,+Clay,+Minnesota+56560&amp;ll=44.976502,-93.272542&amp;spn=0.002656,0.00236&amp;z=17&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?ie=UTF8&amp;hq=&amp;hnear=3012+7th+Ave+N,+Moorhead,+Clay,+Minnesota+56560&amp;ll=44.976502,-93.272542&amp;spn=0.002656,0.00236&amp;z=17&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-
+  <%= @map.to_html %>
+  <div style="width: 300px; height: 350px;">
+    <%= @map.div %>
+  </div>
+  
   <hr />
 
   <p><p>

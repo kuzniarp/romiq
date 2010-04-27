@@ -15,3 +15,4 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
+GOOGLE_APPLICATION_ID = "ABQIAAAAtE2XRci6LgHBnXoLlDKakxT80tQghHzL0J9GNI7sJ4mcpmSIHhSAcaEEtrqVkrB5F451FWckunEepQ"
