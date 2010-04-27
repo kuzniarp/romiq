@@ -4,7 +4,7 @@ class Admin::PagesController < ApplicationController
   layout "admin"
 
   def index
-    @pages = Page.menu_pages
+    @pages = Page.top_level_pages
   end
 
   def show

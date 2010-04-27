@@ -22,9 +22,12 @@
 </div><!--//clearfix-->
 
 <div class="clearfix widget-area">
-  <div class="grid_4 widget"><h2>Kim Jesteśmy</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat dignissim ornare. Mauris blandit sollicitudin blandit. Pellentesque et arcu quam. <a href="#">Wiecej...</a></p></div><!--//grid4-->
-  <div class="grid_4 widget"><h2>Czym Się Zajmujemy</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat dignissim ornare. Mauris blandit sollicitudin blandit. Pellentesque et arcu quam. <a href="#">Wiecej...</a></p></div><!--//grid4-->
-  <div class="grid_4 widget"><h2>Skontaktuj Się z Nami</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris feugiat dignissim ornare. Mauris blandit sollicitudin blandit. Pellentesque et arcu quam. <a href="#">Wiecej...</a></p></div><!--//grid4-->
+  <% @page.children.active.each do |page| %>
+  <div class="grid_4 widget">
+    <h2><%= page.name %></h2>
+    <p><%= page.body %></p>
+  </div><!--//grid4-->
+  <% end %>
 </div><!--//clearfix-->
 
 <div class="grid_12 clearfix">

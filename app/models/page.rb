@@ -15,6 +15,10 @@ class Page < ActiveRecord::Base
   def self.menu_pages
     active.all(:conditions => {:parent_id => nil})
   end
+  
+  def self.top_level_pages
+    all(:conditions => {:parent_id => nil})
+  end
 
   def self.home_page
     HomePage.first || HomePage.new
