@@ -84,58 +84,12 @@
 	    </li>
 	    
 	    <li> 
-	      <%= link_to "Strony", admin_pages_path, :class => "nav-top-item current" %>
-	      <ul>
-		<li><%= link_to "Zarządzaj stronami", admin_pages_path, :class => "current" %></li>
-		<li><%= link_to "Stwórz nową stronę", new_admin_page_path %></li>
-	      </ul>
-	    </li>
-
-	    <li>
-	      <a href="#" class="nav-top-item">
-		Pages
-	      </a>
-	      <ul>
-		<li><a href="#">Create a new Page</a></li>
-		<li><a href="#">Manage Pages</a></li>
-	      </ul>
+	      <%= link_to "Strony", admin_pages_path, :class => "nav-top-item no-submenu" %>
 	    </li>
 	    
 	    <li>
-	      <a href="#" class="nav-top-item">
-		Image Gallery
-	      </a>
-	      <ul>
-		<li><a href="#">Upload Images</a></li>
-		<li><a href="#">Manage Galleries</a></li>
-		<li><a href="#">Manage Albums</a></li>
-		<li><a href="#">Gallery Settings</a></li>
-	      </ul>
-	    </li>
-	    
-	    <li>
-	      <a href="#" class="nav-top-item">
-		Events Calendar
-	      </a>
-	      <ul>
-		<li><a href="#">Calendar Overview</a></li>
-		<li><a href="#">Add a new Event</a></li>
-		<li><a href="#">Calendar Settings</a></li>
-	      </ul>
-	    </li>
-	    
-	    <li>
-	      <a href="#" class="nav-top-item">
-		Settings
-	      </a>
-	      <ul>
-		<li><a href="#">General</a></li>
-		<li><a href="#">Design</a></li>
-		<li><a href="#">Your Profile</a></li>
-		<li><a href="#">Users and Permissions</a></li>
-	      </ul>
-	    </li>      
-	    
+	      <%= link_to "Realizacje", admin_works_path, :class => "nav-top-item no-submenu" %>
+	    </li>	    
 	  </ul> <!-- End #main-nav -->
 	  
 	  <div id="messages" style="display: none"> <!-- Messages are shown when a link with these attributes are clicked: href="#messages" rel="modal"  -->
