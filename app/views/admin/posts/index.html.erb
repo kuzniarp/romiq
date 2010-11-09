@@ -1,0 +1,68 @@
+<div class="content-box"><!-- Start Content Box -->
+  
+  <div class="content-box-header">
+    
+    <h3>Zarządzaj aktualnosciami</h3>
+        
+    <div class="clear"></div>
+    
+  </div> <!-- End .content-box-header -->
+  
+  <div class="content-box-content">
+    
+    <div class="tab-content default-tab" id="tab1"> <!-- This is the target div. id must match the href of this div's tab -->
+            
+      <table>
+	
+	<thead>
+	  <tr>
+	    <th>Tytuł</th>
+	    <th>Zawartość</th>
+	    <th>Status</th>
+	    <th style="width:70px;">&nbsp;</th>
+	  </tr>
+	  
+	</thead>
+	
+	<tfoot>
+	  <tr>
+	    <td colspan="6">
+	      <div class="bulk-actions align-left">
+		<%= link_to 'Dodaj posta', new_admin_post_path %>
+	      </div>
+	      
+	      <div class="pagination" style="display:none;">
+		<a href="#" title="First Page">&laquo; First</a><a href="#" title="Previous Page">&laquo; Previous</a>
+		<a href="#" class="number" title="1">1</a>
+		<a href="#" class="number" title="2">2</a>
+		<a href="#" class="number current" title="3">3</a>
+		<a href="#" class="number" title="4">4</a>
+		<a href="#" title="Next Page">Next &raquo;</a><a href="#" title="Last Page">Last &raquo;</a>
+	      </div> <!-- End .pagination -->
+	      <div class="clear"></div>
+	    </td>
+	  </tr>
+	</tfoot>
+	
+	<tbody>
+
+	  <% @posts.each do |post| %>
+	  <tr class="parent">
+	    <td class="name"><%= link_to post.name, edit_admin_post_path(post) %></td>
+	    <td><%= truncate(strip_tags(post.body), :length => 100) %></td>
+	    <td><%=h post.status.to_s(:activation) %></td>
+	    <td>
+	      <%= link_to '<img src="/images/icons/pencil.png" alt="Edytuj" />', edit_admin_post_path(post) %>
+	      <%= link_to '<img src="/images/icons/cross.png" alt="Usuń" />', [:admin, post], :confirm => 'Jesteś pewien?', :method => :delete %>
+	    </td>
+	  </tr>
+	  <% end %>
+	</tbody>
+	
+      </table>
+      
+    </div> <!-- End #tab1 -->
+        
+  </div> <!-- End .content-box-content -->
+  
+</div> <!-- End .content-box -->
