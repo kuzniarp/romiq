@@ -28,6 +28,16 @@
     <p><%= page.body %></p>
   </div><!--//grid4-->
   <% end %>
+
+  <div class="grid_4 widget">
+    <h2>Aktualnosci</h2>
+    <% if newest = Post.newest %>
+      <h3><%= newest.name %></h3>
+      <p><%= truncate(strip_tags(newest.body.to_s), :length => 100) %></p>
+      <%= link_to 'wiecej', posts_path %>
+    <% end %>
+  </div><!--//grid4-->
+
 </div><!--//clearfix-->
 
 <div class="grid_12 clearfix">
