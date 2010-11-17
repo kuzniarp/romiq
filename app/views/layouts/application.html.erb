@@ -37,7 +37,7 @@
 	    <div class="menu-horizontal clearfix">
 	      <ul class="sf-menu">
 		<% for page in Page.menu_pages do %>
-		  <li><%= link_to page.name, page.is_a?(HomePage) ? root_path : page_path(page) %></li>
+		  <li><%= link_to page.name, link_to_page(page) %></li>
 		<% end %>
 	    </div><!--//menu horizontal-->
 	  </div><!--//grid_12-->

@@ -43,8 +43,10 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :portfolios, :controller => "pages"
     admin.resources :works
     admin.resources :posts
+    admin.resources :products
   end
 
+  map.products '/produkty', :controller => 'products', :action => 'index'
   map.resources :posts
   map.page '/:id', :controller => "pages", :action => "show", :conditions => {:parent_id => nil}
 
