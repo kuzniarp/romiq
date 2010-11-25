@@ -38,8 +38,30 @@
     <% end %>
   </div><!--//grid4-->
 
+  <div class="grid_4 widget">
+    <h2>Najnowsze produkty</h2>
+    <% if newest = Product.newest(5) %>
+    <ul style="padding:0;" id="products_carousel">
+    <% newest.each do |product| %>
+    <li style="list-style:none;width:300px;float:left;">
+      <h3><%= product.name %></h3>
+      <p><%= truncate(strip_tags(product.description.to_s), :length => 100) %></p>
+      <%= link_to 'wiecej', products_path %>
+    </li>
+    <% end %>
+    </ul>
+    <% end %>
+  </div><!--//grid4-->
+
+  
 </div><!--//clearfix-->
 
 <div class="grid_12 clearfix">
   <hr />
 </div><!--//grid_12-->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#products_carousel').bxSlider({auto:true,controls:false});
+  });
+</script>
