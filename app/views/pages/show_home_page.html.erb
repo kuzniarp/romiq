@@ -41,9 +41,9 @@
   <div class="grid_4 widget">
     <h2>Najnowsze produkty</h2>
     <% if newest = Product.newest(5) %>
-    <ul style="padding:0;" id="products_carousel">
+    <ul id="products_carousel" style="padding:0;">
     <% newest.each do |product| %>
-    <li style="list-style:none;width:300px;float:left;">
+    <li style="list-style:none;padding:0;">
       <h3><%= product.name %></h3>
       <p><%= truncate(strip_tags(product.description.to_s), :length => 100) %></p>
       <%= link_to 'wiecej', products_path %>
