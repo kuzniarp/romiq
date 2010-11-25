@@ -46,6 +46,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :products
   end
 
+  map.products '/galeria', :controller => 'works', :action => 'index'
   map.products '/produkty', :controller => 'products', :action => 'index'
   map.resources :posts
   map.page '/:id', :controller => "pages", :action => "show", :conditions => {:parent_id => nil}

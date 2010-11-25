@@ -15,6 +15,7 @@ class Page < ActiveRecord::Base
   def self.menu_pages
     pages = active.all(:conditions => {:parent_id => nil})
     pages << ProductPage.new(:name => "Produkty", :permalink => "produkty", :item_order => 1.1)
+    pages << WorkPage.new(:name => "Galeria", :permalink => "galeria", :item_order => 1.2)
     pages.sort_by(&:item_order)
   end
   

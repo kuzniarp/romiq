@@ -1,0 +1,2 @@
+class WorkPage < Page
+end

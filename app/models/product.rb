@@ -5,4 +5,7 @@ class Product < ActiveRecord::Base
   :url => "/assets/:attachment/:class/:id/:style/:filename", :default_url => "/images/missing.png"
 
   has_permalink :name, :unique => true, :to_param => :permalink
+
+  has_many :category_items, :as => :item
+  has_many :categories, :through => :category_items
 end
