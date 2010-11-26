@@ -1,11 +1,12 @@
 <div class="grid_2">
   <h3>Kategorie</h3>
+  <%= category_list ProductCategory %>
 </div>
 <div class="grid_10">
   <% for product in @products do %>
     <div>
       <h3><%= product.name %></h3>
-      <%= image_tag product.image.url(:medium) if product.image %>
+      <% image_tag product.image.url(:medium) if product.image %>
       <%= product.description %>
     </div>
     <hr />

@@ -46,9 +46,10 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :products
   end
 
-  map.products '/galeria', :controller => 'works', :action => 'index'
+  map.works '/galeria', :controller => 'works', :action => 'index'
   map.products '/produkty', :controller => 'products', :action => 'index'
   map.resources :posts
+  map.resources :categories
   map.page '/:id', :controller => "pages", :action => "show", :conditions => {:parent_id => nil}
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
