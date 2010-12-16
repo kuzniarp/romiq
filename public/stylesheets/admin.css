@@ -262,7 +262,7 @@ a.remove-link:hover {
 /* Unordered List */
 
 #main-content ul li {
-                background: url('../images/icons/bullet_black.png') center left no-repeat;
+                background: url('../images/icons/bullet_black.png') top left no-repeat;
                 padding: 4px 0 4px 20px;
                 }
 

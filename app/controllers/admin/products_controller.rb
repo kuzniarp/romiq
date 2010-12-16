@@ -33,7 +33,7 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find_by_id(params[:id])
-    
+#    params[:product][:category_ids] ||= []    
     respond_to do |format|
       if @product.update_attributes(params[:product])
         flash[:notice] = 'Produkt został zaktualizowany.'

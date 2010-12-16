@@ -18,6 +18,21 @@
       <label>Opis</label>
       <%= f.cktext_area :description, :toolbar=>'Full', :width=>'99%', :language => 'pl' %>
     </p>
+
+    <p>
+      <%= f.label 'product[category_ids][]', "Kategoria" %><br />
+      <% # f.select 'categories', ProductCategory.all.map{|p| [p.name, p.id]} %><br />
+      <%= collection_select :product, :category_ids, ProductCategory.find(:all, :order => 'name ASC'), :id, :name, { :selected => @product.category_ids }, { :multiple => false, :name => 'product[category_ids][]' } -%>
+
+      <% if false %>
+      <% for category in ProductCategory.find(:all) %>
+      <div>
+	<%= check_box_tag "product[category_ids][]", category.id, @product.categories.include?(category) %>
+	<%= category.name %>
+      </div>
+      <% end %>
+      <% end %>
+    </p>
         
     <p>
       <label>Status</label>

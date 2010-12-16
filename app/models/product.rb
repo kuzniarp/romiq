@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
   has_permalink :name, :unique => true, :to_param => :permalink
 
   has_many :category_items, :as => :item
-  has_many :categories, :through => :category_
+  has_many :categories, :through => :category_items
 
   named_scope :active, :conditions => {:status => true}
 
