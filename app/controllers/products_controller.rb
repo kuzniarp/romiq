@@ -1,7 +1,11 @@
 class ProductsController < ApplicationController
       
       def index
-      	  @products = Product.all
+      	  if params[:category_id]      	  
+	     	@products = ProductCategory.find_by_permalink(params[:category_id]).products
+	  else
+		@products = Product.all
+	  end
       end
 
       def show

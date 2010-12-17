@@ -50,6 +50,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.works '/galeria', :controller => 'works', :action => 'index'
   map.products '/produkty', :controller => 'products', :action => 'index'
+  map.products_category '/produkty/:category_id', :controller => 'products', :action => 'index'
   map.resources :posts
   map.resources :categories
   map.page '/:id', :controller => "pages", :action => "show", :conditions => {:parent_id => nil}
