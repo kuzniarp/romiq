@@ -12,6 +12,11 @@
       <label>Zawartość</label>
       <%= f.cktext_area :description, :toolbar=>'Full', :width=>'99%', :language => 'pl' %>
     </p>
+
+    <p>
+      <%= f.label 'work[category_ids][]', "Kategoria" %><br />
+      <%= collection_select :work, :category_ids, WorkCategory.find(:all, :order => 'name ASC'), :id, :name, { :selected => @work.category_ids }, { :multiple => false, :name => 'work[category_ids][]' } -%>
+    </p>
         
     <p>
       <label>Status</label>

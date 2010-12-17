@@ -11,7 +11,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find_by_id(params[:id])
+    @category = Category.find_by_permalink(params[:id])
   end
 
   def create
@@ -21,7 +21,7 @@ class Admin::CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         flash[:notice] = 'Strona została zapisana.'
-        format.html { redirect_to(admin_products_path) }
+        format.html { redirect_to(category_class == ProductCategory ? admin_products_path : admin_work_path) }
       else
         format.html { render :action => "new" }
       end
@@ -29,12 +29,12 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def update
-    @category = Category.find_by_id(params[:id])
+    @category = Category.find_by_permalink(params[:id])
     
     respond_to do |format|
       if @category.update_attributes(params[:category])
         flash[:notice] = 'Kategoria została zaktualizowana'
-        format.html { redirect_to(admin_products_path) }
+        format.html { redirect_to(@category.class == ProductCategory ? admin_products_path : admin_works_path) }
       else
         format.html { render :action => "edit" }
       end
@@ -42,7 +42,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def destroy
-    @category = Category.find_by_id(params[:id])
+    @category = Category.find_by_permalink(params[:id])
     @category.destroy
 
     respond_to do |format|

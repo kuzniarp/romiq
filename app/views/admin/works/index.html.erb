@@ -2,7 +2,12 @@
   
   <div class="content-box-header">
     
-    <h3>Zarządzaj realizacjami</h3>
+    <h3>Zarządzaj galeriami</h3>
+
+    <ul class="content-box-tabs">
+      <li><a href="#tab1" class="default-tab">Galerie</a></li> <!-- href must be unique and match the id of target div -->
+      <li><a href="#tab2">Kategorie</a></li>
+    </ul>
         
     <div class="clear"></div>
     
@@ -65,6 +70,11 @@
       </table>
       
     </div> <!-- End #tab1 -->
+
+    <div class="tab-content" id="tab2"> <!-- This is the target div. id must match the href of this div's tab -->
+      <h3>Kategorie</h3>
+      <%= category_list WorkCategory, true %>
+    </div>
         
   </div> <!-- End .content-box-content -->
   

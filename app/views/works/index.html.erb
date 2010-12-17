@@ -1,4 +1,8 @@
-<div class="grid_12">
+<div class="grid_2 nested_lists">
+  <h3>Kategorie</h3>
+  <%= category_list WorkCategory %>
+</div>
+<div class="grid_10">
   <% for work in @works do %>
     <div>
       <h3><%= work.name %></h3>
