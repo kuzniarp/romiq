@@ -1,3 +1,8 @@
 .nested_lists ul {list-style:none;padding:0;margin:0;}
 .nested_lists li {padding:0 0 0 10px;margin:0;}
 .nested_lists li a{text-decoration:none;}
+.hp_sliders h3, .hp_sliders h4, .hp_sliders p{padding:0 0 5px 0;color:#777}
+.hp_sliders p{padding:0 0 0 3px; line-height:120%;color:#aaa;}
+.hp_sliders a{color:#777;}
+.hp_sliders h3{font-size:1.5em;}
+.hp_sliders h4{font-size:1.4em;}

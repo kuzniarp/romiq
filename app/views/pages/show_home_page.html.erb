@@ -21,7 +21,7 @@
   </div><!--//grid10-->
 </div><!--//clearfix-->
 
-<div class="clearfix widget-area">
+<div class="clearfix widget-area hp_sliders">
   <% @page.children.active.each do |page| %>
   <div class="grid_4 widget">
     <h2><%= page.name %></h2>
@@ -30,22 +30,22 @@
   <% end %>
 
   <div class="grid_4 widget">
-    <h2>Aktualnosci</h2>
+    <h3>AKTUALNOSCI</h3>
     <% if newest = Post.newest %>
-      <h3><%= newest.name %></h3>
-      <p><%= truncate(strip_tags(newest.body.to_s), :length => 100) %></p>
+      <h4><%= newest.name %></h4>
+      <p><%= truncate(strip_tags(newest.body.to_s), :length => 200) %></p>
       <%= link_to 'wiecej', posts_path %>
     <% end %>
   </div><!--//grid4-->
 
   <div class="grid_4 widget">
-    <h2>Najnowsze produkty</h2>
+    <h3>NOWE PRODUKTY</h3>
     <% if newest = Product.newest(5) %>
     <ul id="products_carousel" style="padding:0;">
     <% newest.each do |product| %>
     <li style="list-style:none;padding:0;">
-      <h3><%= product.name %></h3>
-      <p><%= truncate(strip_tags(product.description.to_s), :length => 100) %></p>
+      <h4><%= product.name %></h4>
+      <p><%= truncate(strip_tags(product.description.to_s), :length => 200) %></p>
       <%= link_to 'wiecej', products_path %>
     </li>
     <% end %>
@@ -54,13 +54,13 @@
   </div><!--//grid4-->
 
   <div class="grid_4 widget">
-    <h2>Najnowsze galerie</h2>
+    <h3>NOWE GALERIE</h3>
     <% if newest = Work.newest(5) %>
     <ul id="works_carousel" style="padding:0;">
     <% newest.each do |work| %>
     <li style="list-style:none;padding:0;">
-      <h3><%= work.name %></h3>
-      <p><%= truncate(strip_tags(work.description.to_s), :length => 100) %></p>
+      <h4><%= work.name %></h4>
+      <p><%= truncate(strip_tags(work.description.to_s), :length => 200) %></p>
       <%= link_to 'wiecej', works_path %>
     </li>
     <% end %>
