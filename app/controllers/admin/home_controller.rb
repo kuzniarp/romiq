@@ -5,6 +5,7 @@ class Admin::HomeController < ApplicationController
   before_filter :admin_required, :except => :login
 
   def index
+      redirect_to admin_posts_path
   end
 
   def login
