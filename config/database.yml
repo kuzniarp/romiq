@@ -36,5 +36,4 @@ production:
   database: kuzniarp_romiq
   username: kuzniarp
   password: mPLX8XbpFjbqR9VG
-  host: 10.132.2.150
-  socket: /tmp/mysql.sock
+  host: db01.openetworks.pl
