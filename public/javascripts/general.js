@@ -52,7 +52,13 @@ $(function(){
 		fastOnEvent: 350,
 		pagerAnchorBuilder: function(idx, slide) { 
 			return "#promo-nav li:eq("+ idx +") a"; 
-		}
+		},
+    after: function(curr, next, opts, fwd){
+      //get the height of the current slide
+      var $ht = $(this).height();
+      //set the container's height to that of the current slide
+      $(this).parent().css("height", $ht);
+    }
 	});
 	
 	// Fix applied so menu appears OVER cycled images
