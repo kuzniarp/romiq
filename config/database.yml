@@ -12,7 +12,7 @@ development:
   username: railsuser
   password: railspass
   host: localhost
-  socket: /var/run/mysqld/mysqld.sock
+  socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -34,5 +34,4 @@ production:
   database: kuzniarp_romiq
   username: kuzniarp
   password: mPLX8XbpFjbqR9VG
-  host: 10.132.2.150
-  socket: /tmp/mysql.sock
+  host: db01.openetworks.pl
