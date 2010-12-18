@@ -16,7 +16,7 @@ module ApplicationHelper
        	 list = ''
          roots = model.roots
 	 roots.each do |root|
-	 	    list += content_tag(:ul, content_tag(:li, link_to(root.name, (admin ? edit_admin_category_path(root) : (model == ProductCategory ? products_category_path(root) : works_category_path(root)))) + (link_to(" +", new_admin_category_path(:parent_id => root, :type => model)) if admin).to_s + subcategory_list(root, admin)))
+	 	    list += content_tag(:ul, content_tag(:li, link_to(root.name, (admin ? edit_admin_category_path(root) : (model == ProductCategory ? products_category_path(root) : works_category_path(root)))) + (link_to(" +", new_admin_category_path(:parent_id => root.id, :type => model)) if admin).to_s + subcategory_list(root, admin)))
          end
 	 list += link_to("Dodaj kategorie glowna", new_admin_category_path(:type => model)) if admin
 	 list
@@ -25,7 +25,7 @@ module ApplicationHelper
       def subcategory_list root, admin
       	  list = ''
       	  root.children.each do |cat|
-      	  	list += content_tag(:li, link_to(cat.name, (admin ? edit_admin_category_path(cat) : (model == ProductCategory ? products_category_path(root) : works_category_path(root)))) + (link_to(" +", new_admin_category_path(:parent_id => cat, :type => cat.class)) if admin).to_s + subcategory_list(cat, admin))
+      	  	list += content_tag(:li, link_to(cat.name, (admin ? edit_admin_category_path(cat) : (model == ProductCategory ? products_category_path(root) : works_category_path(root)))) + (link_to(" +", new_admin_category_path(:parent_id => cat.id, :type => cat.class)) if admin).to_s + subcategory_list(cat, admin))
       	  end  
 #	  list += content_tag(:li, link_to("Nowa", new_admin_category_path)) if admin
       	  list.present? ? content_tag(:ul, list, :style => 'margin:0;') : ''
