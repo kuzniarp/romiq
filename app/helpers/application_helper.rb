@@ -25,7 +25,7 @@ module ApplicationHelper
       def subcategory_list root, admin
       	  list = ''
       	  root.children.each do |cat|
-      	  	list += content_tag(:li, link_to(cat.name, (admin ? edit_admin_category_path(cat) : (model == ProductCategory ? products_category_path(root) : works_category_path(root)))) + (link_to(" +", new_admin_category_path(:parent_id => cat.id, :type => cat.class)) if admin).to_s + subcategory_list(cat, admin))
+      	  	list += content_tag(:li, link_to(cat.name, (admin ? edit_admin_category_path(cat) : (cat.class == ProductCategory ? products_category_path(root) : works_category_path(root)))) + (link_to(" +", new_admin_category_path(:parent_id => cat.id, :type => cat.class)) if admin).to_s + subcategory_list(cat, admin))
       	  end  
 #	  list += content_tag(:li, link_to("Nowa", new_admin_category_path)) if admin
       	  list.present? ? content_tag(:ul, list, :style => 'margin:0;') : ''
