@@ -21,7 +21,7 @@ class Admin::CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         flash[:notice] = 'Strona została zapisana.'
-        format.html { redirect_to(category_class == ProductCategory ? admin_products_path : admin_work_path) }
+        format.html { redirect_to(category_class == ProductCategory ? admin_products_path : admin_works_path) }
       else
         format.html { render :action => "new" }
       end

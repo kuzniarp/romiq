@@ -3,7 +3,7 @@ class WorksController < ApplicationController
       	  if params[:category_id]      	  
 	     	@works = WorkCategory.find_by_permalink(params[:category_id]).works
 	  else
-		@works = Work.all
+		@works = Work.all(:order => "created_at desc", :limit => 5)
 	  end
       end
 
