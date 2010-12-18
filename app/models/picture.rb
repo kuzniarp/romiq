@@ -13,7 +13,7 @@ class Picture < Asset
   #   created_at        : datetime 
   #   updated_at        : datetime 
   # =======================
-
+  belongs_to :assetable, :polymorphic => true
   
   has_attached_file :data,
                     :url  => "/assets/pictures/:id/:style_:basename.:extension",

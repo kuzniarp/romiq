@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class PagesController < ApplicationController
   def show
     @page = params[:id].present? ? Page.find_by_permalink(params[:id]) : Page.home_page

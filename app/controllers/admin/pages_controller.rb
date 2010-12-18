@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class Admin::PagesController < ApplicationController
 
   layout "admin"

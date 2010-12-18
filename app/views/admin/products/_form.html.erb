@@ -1,0 +1,49 @@
+<% form_for([:admin,  @product], :html => {:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+  
+  <fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
+    
+    <p>
+      <label>Nazwa</label>
+      <%= f.text_field :name, :class => "text-input small-input" %>
+    </p>
+    
+    <p>
+      <label>Zdjecie</label>
+      <%= image_tag @product.image.url(:thumb) if @product.image %>
+      <%= f.file_field :image %>
+    </p>
+
+    <p>
+      <label>Opis</label>
+      <%= f.cktext_area :description, :toolbar=>'Full', :width=>'99%', :language => 'pl' %>
+    </p>
+
+    <p>
+      <%= f.label 'product[category_ids][]', "Kategoria" %><br />
+      <% # f.select 'categories', ProductCategory.all.map{|p| [p.name, p.id]} %><br />
+      <%= collection_select :product, :category_ids, ProductCategory.find(:all, :order => 'name ASC'), :id, :name, { :selected => @product.category_ids }, { :multiple => false, :name => 'product[category_ids][]' } -%>
+
+      <% if false %>
+      <% for category in ProductCategory.find(:all) %>
+      <div>
+	<%= check_box_tag "product[category_ids][]", category.id, @product.categories.include?(category) %>
+	<%= category.name %>
+      </div>
+      <% end %>
+      <% end %>
+    </p>
+        
+    <p>
+      <label>Status</label>
+      <%= f.check_box :status %> Aktywny?
+    </p>
+                
+    <p>
+      <input class="button" type="submit" value="Zapisz" />
+    </p>
+    
+  </fieldset>
+  
+  <div class="clear"></div><!-- End .clear -->
+<% end %>

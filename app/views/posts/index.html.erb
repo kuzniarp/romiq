@@ -1,0 +1,9 @@
+<div class="grid_12">
+  <% for post in @posts do %>
+    <div>
+      <h3><%= post.name %></h3>
+      <%= post.body %>
+    </div>
+    <hr />
+   <% end %>
+</div>
