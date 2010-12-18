@@ -53,6 +53,20 @@
     <% end %>
   </div><!--//grid4-->
 
+  <div class="grid_4 widget">
+    <h2>Najnowsze galerie</h2>
+    <% if newest = Work.newest(5) %>
+    <ul id="works_carousel" style="padding:0;">
+    <% newest.each do |work| %>
+    <li style="list-style:none;padding:0;">
+      <h3><%= work.name %></h3>
+      <p><%= truncate(strip_tags(work.description.to_s), :length => 100) %></p>
+      <%= link_to 'wiecej', works_path %>
+    </li>
+    <% end %>
+    </ul>
+    <% end %>
+  </div><!--//grid4-->
   
 </div><!--//clearfix-->
 
@@ -62,6 +76,9 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $('#products_carousel').bxSlider({auto:true,controls:false});
+    $('#products_carousel').bxSlider({auto:true,controls:false,randomStart:true,mode:'fade',pause:5000});
+  });
+  $(document).ready(function(){
+    $('#works_carousel').bxSlider({auto:true,controls:false,randomStart:true,mode:'fade',pause:5000});
   });
 </script>
