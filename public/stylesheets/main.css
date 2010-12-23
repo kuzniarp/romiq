@@ -3,8 +3,10 @@
 .nested_lists li a{text-decoration:none;}
 .hp_sliders {padding:0;}
 .hp_sliders h4, .hp_sliders h5, .hp_sliders p{padding:0;color:#777}
-.hp_sliders p{padding:0 0 0 3px; line-height:120%;color:#aaa;text-align:justify;}
+.hp_sliders p{line-height:120%;color:#aaa;text-align:justify;}
 .hp_sliders p a{color:#c55;text-decoration:none;position:relative;left:250px;}
 .hp_sliders a{color:#777;}
 .hp_sliders h4{font-size:1.1em;}
 .hp_sliders h5{font-size:1.1em;}
+.hp_sliders ul{padding:0;}
+.hp_sliders ul li{list-style:none;padding:0;}

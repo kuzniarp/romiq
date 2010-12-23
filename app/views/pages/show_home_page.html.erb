@@ -42,9 +42,9 @@
   <div class="grid_4 widget">
     <h4>NOWE PRODUKTY</h4>
     <% if newest = Product.newest(5) %>
-    <ul id="products_carousel" style="padding:0;">
+    <ul id="products_carousel">
     <% newest.each do |product| %>
-    <li style="list-style:none;padding:0;">
+    <li>
       <h5><%= product.name %></h5>
       <p><%= truncate(strip_tags(product.description.to_s), :length => 240) %><br />
         <%= link_to 'wiecej...', products_path %>
@@ -58,9 +58,9 @@
   <div class="grid_4 widget">
     <h4>NOWE GALERIE</h4>
     <% if newest = Work.newest(5) %>
-    <ul id="works_carousel" style="padding:0;">
+    <ul id="works_carousel">
     <% newest.each do |work| %>
-    <li style="list-style:none;padding:0;">
+    <li>
       <h5><%= work.name %></h5>
       <p><%= truncate(strip_tags(work.description.to_s), :length => 240) %><br />
         <%= link_to 'wiecej...', works_path %>
