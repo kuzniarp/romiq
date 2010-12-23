@@ -32,8 +32,11 @@
   <div class="grid_4 widget">
     <h4>AKTUALNOSCI</h4>
     <% if newest = Post.newest %>
-      <h5><%= newest.name %></h5>
-      <p><%= truncate(strip_tags(newest.body.to_s), :length => 240) %><br />
+      <p>
+        <span>
+          <b><%= newest.name %></b>
+          <%= strip_tags(newest.body.to_s) %><br />
+        </span>
         <%= link_to 'wiecej...', posts_path %>
       </p>
     <% end %>
@@ -45,8 +48,11 @@
     <ul id="products_carousel">
     <% newest.each do |product| %>
     <li>
-      <h5><%= product.name %></h5>
-      <p><%= truncate(strip_tags(product.description.to_s), :length => 240) %><br />
+      <p>
+        <span>
+          <b><%= product.name %></b>
+          <%= strip_tags(product.description.to_s) %><br />
+        </span>
         <%= link_to 'wiecej...', products_path %>
       </p>
     </li>
@@ -61,8 +67,11 @@
     <ul id="works_carousel">
     <% newest.each do |work| %>
     <li>
-      <h5><%= work.name %></h5>
-      <p><%= truncate(strip_tags(work.description.to_s), :length => 240) %><br />
+      <p>
+        <span>
+          <b><%= work.name %></b>
+          <%= strip_tags(work.description.to_s) %><br />
+        </span>
         <%= link_to 'wiecej...', works_path %>
       </p>
     </li>
