@@ -17,10 +17,8 @@
     </div>
     <div class="tab-content" id="tab2">      
       
-      <ul>
-        <% @work.pictures.each do |picture| %>
-          <li style="background:none;float:left;padding:10px;margin:0;height:100px;overflow:hidden;"><%= image_tag picture.url(:thumb) %></li>
-        <% end %>
+      <ul id="pictures_list">
+        <%= render :partial => 'picture', :collection => @work.pictures %>
       </ul>
       <div class="clear">
 

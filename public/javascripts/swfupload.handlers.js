@@ -109,7 +109,7 @@ function uploadSuccess(file, serverData) {
 		progress.setComplete();
 		progress.setStatus("Complete.");
 		progress.toggleCancel(false);
-
+    $('#pictures_list').append(serverData);
 	} catch (ex) {
 		this.debug(ex);
 	}
@@ -169,8 +169,7 @@ function uploadError(file, errorCode, message) {
 
 function uploadComplete(file) {
 	if (this.getStats().files_queued === 0) {
-		document.getElementById(this.customSettings.cancelButtonId).disabled = true;
-		
+	  document.getElementById(this.customSettings.cancelButtonId).disabled = true;
 	}
 }
 
