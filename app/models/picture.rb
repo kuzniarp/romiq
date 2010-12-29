@@ -1,3 +1,4 @@
+require 'mime/types'
 class Picture < Asset
 
   # === List of columns ===
@@ -21,6 +22,14 @@ class Picture < Asset
 	                  :styles => { :content => '575>', :thumb => '100x100' }
 	
 	validates_attachment_size :data, :less_than=>2.megabytes
+  validates_attachment_presence :data
+  validates_attachment_content_type :data, :content_type => ['image/jpeg', 'image/pjpeg', 'image/jpg']
+  
+  # Fix the mime types. Make sure to require the mime-types gem
+  def swfupload_file=(file_data)
+    file_data.content_type = MIME::Types.type_for(file_data.original_filename).to_s
+    self.data = file_data
+  end
 	
 	def url_content
 	  url(:content)

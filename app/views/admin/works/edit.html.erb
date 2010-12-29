@@ -1,11 +1,93 @@
 <div class="content-box">  
   <div class="content-box-header">    
     <h3>Edycja realizacji</h3>
-  </div>
-  
-  <div class="content-box-content">
-    <%= render :partial => "form" %>
+
+    <ul class="content-box-tabs">
+      <li><a href="#tab1" class="default-tab">Opis</a></li> <!-- href must be unique and match the id of target div -->
+      <li><a href="#tab2">Zdjecia</a></li>
+    </ul>
     
-    <%= link_to 'Wróć', admin_works_path %>
+    <div class="clear"></div>
+  </div>  
+  <div class="content-box-content">
+    <div class="tab-content default-tab" id="tab1"> <!-- This is the target div. id must match the href of this div's tab -->
+      <%= render :partial => "form" %>
+      
+      <%= link_to 'Wróć', admin_works_path %>
+    </div>
+    <div class="tab-content" id="tab2">      
+      
+      <ul>
+        <% @work.pictures.each do |picture| %>
+          <li><%= image_tag picture.url(:thumb) %></li>
+        <% end %>
+      </ul>
+
+      <%= javascript_include_tag 'swfupload' %>
+	    <%= javascript_include_tag 'swfupload.handlers' %>
+	    <%= javascript_include_tag 'swfupload.queue' %>
+	    <%= javascript_include_tag 'swfupload.fileprogress' %>
+      <% upload_url = {:controller => '/admin/pictures', :action => 'create'} %>
+      <% session_key = ActionController::Base.session_options[:key] %>
+      <% upload_url = url_for upload_url.merge({"#{session_key}" => cookies[session_key], :request_forgery_protection_token => form_authenticity_token}) %>
+	    <script type="text/javascript">
+		    var swfu;
+		    
+		    // Dom Ready
+		    $(document).ready(function() {
+			  // Setup SWFU object
+        
+        var settings = {
+        flash_url : "/flash/swfupload.swf",
+        upload_url: "<%= upload_url -%>",
+        post_params: {authenticity_token : "<%= form_authenticity_token -%>"},
+        file_size_limit : "3 MB",
+        file_types : "*.*",
+        file_types_description : "All Files",
+        file_upload_limit : 100,
+        file_queue_limit : 0,
+        custom_settings : {
+        progressTarget : "fsUploadProgress",
+        cancelButtonId : "btnCancel"
+        },
+        debug: true,
+
+        // Button settings
+        //button_image_url: "/images/FullyTransparent_65x29.png",
+        button_width: "65",
+        button_height: "29",
+        button_placeholder_id: "spanButtonPlaceHolder",
+        button_text: '<span class="theFont">Upload</span>',
+        button_text_style: ".theFont { font-size: 16; }",
+        button_text_left_padding: 12,
+        button_text_top_padding: 3,
+        
+        // The event handler functions are defined in handlers.js
+        file_queued_handler : fileQueued,
+        file_queue_error_handler : fileQueueError,
+        file_dialog_complete_handler : fileDialogComplete,
+        upload_start_handler : uploadStart,
+        upload_progress_handler : uploadProgress,
+        upload_error_handler : uploadError,
+        upload_success_handler : uploadSuccess,
+        upload_complete_handler : uploadComplete,
+        queue_complete_handler : queueComplete// Queue plugin event
+        };
+			  
+			  swfu = new SWFUpload(settings);
+			  
+		    });
+	    </script>
+      <%= form_tag admin_pictures_path, {:multipart => true} %>
+      <div id="fsUploadProgress" class="fieldset flash">
+        <span class="legend">Upload Queue</span>
+      </div>
+      <div id="divStatus">0 Files Uploaded</div>
+      <div>
+        <span id="spanButtonPlaceHolder"></span>
+        <input id="btnCancel" type="button" value="Cancel All Uploads" onclick="swfu.cancelQueue();" disabled="disabled" style="margin-left: 2px; font-size: 8pt; height: 29px;"/>  
+      </div>
+     </form > 
+   </div>
   </div>  
 </div>
