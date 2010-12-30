@@ -81,14 +81,14 @@ FileProgress.prototype.reset = function () {
 };
 
 FileProgress.prototype.setProgress = function (percentage) {
-	this.fileProgressElement.className = "progressContainer green";
+	this.fileProgressElement.className = "progressContainer blue";
 	this.fileProgressElement.childNodes[3].className = "progressBarInProgress";
 	this.fileProgressElement.childNodes[3].style.width = percentage + "%";
 
 	this.appear();	
 };
 FileProgress.prototype.setComplete = function () {
-	this.fileProgressElement.className = "progressContainer blue";
+	this.fileProgressElement.className = "progressContainer green";
 	this.fileProgressElement.childNodes[3].className = "progressBarComplete";
 	this.fileProgressElement.childNodes[3].style.width = "";
 

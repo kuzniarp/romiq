@@ -22,4 +22,10 @@ class Admin::PicturesController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @picture = Picture.find_by_id(params[:id])
+    @picture.destroy
+    render :nothing => true
+  end
 end

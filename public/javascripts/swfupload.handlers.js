@@ -97,7 +97,7 @@ function uploadProgress(file, bytesLoaded, bytesTotal) {
 
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
 		progress.setProgress(percent);
-		progress.setStatus("Uploading...");
+		progress.setStatus("Uploadowanie...");
 	} catch (ex) {
 		this.debug(ex);
 	}
@@ -107,7 +107,7 @@ function uploadSuccess(file, serverData) {
 	try {
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
 		progress.setComplete();
-		progress.setStatus("Complete.");
+		progress.setStatus("Zakonczono.");
 		progress.toggleCancel(false);
     $('#pictures_list').append(serverData);
 	} catch (ex) {
@@ -151,11 +151,11 @@ function uploadError(file, errorCode, message) {
 			if (this.getStats().files_queued === 0) {
 				document.getElementById(this.customSettings.cancelButtonId).disabled = true;
 			}
-			progress.setStatus("Cancelled");
+			progress.setStatus("Anulowano");
 			progress.setCancelled();
 			break;
 		case SWFUpload.UPLOAD_ERROR.UPLOAD_STOPPED:
-			progress.setStatus("Stopped");
+			progress.setStatus("Zatrzymano");
 			break;
 		default:
 			progress.setStatus("Unhandled Error: " + errorCode);
@@ -176,7 +176,8 @@ function uploadComplete(file) {
 // This event comes from the Queue Plugin
 function queueComplete(numFilesUploaded) {
 	var status = document.getElementById("divStatus");
-	status.innerHTML = numFilesUploaded + " file" + (numFilesUploaded === 1 ? "" : "s") + " uploaded.";
+	//status.innerHTML = numFilesUploaded + " file" + (numFilesUploaded === 1 ? "" : "s") + " uploaded.";
+  status.innerHTML = "Liczba uploadowanych plikow: " + numFilesUploaded + ".";
 
 /*	$.post(update_files_url, "", function(data) {*/
 /*                jQuery('#').html(data);*/
