@@ -49,7 +49,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :work_categories, :controller => "categories"
     admin.resources :pictures#, :only => [:create, :delete]
   end
-
+    
+  map.work '/galeria/:id', :controller => 'works', :action => 'show', :requirements => {:id => /\d/}
   map.works '/galeria', :controller => 'works', :action => 'index'
   map.works_category '/galeria/:category_id', :controller => 'works', :action => 'index'
   map.products '/produkty', :controller => 'products', :action => 'index'

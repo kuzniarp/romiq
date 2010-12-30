@@ -5,9 +5,10 @@
 .hp_sliders h4, .hp_sliders h5, .hp_sliders p{padding:0;color:#777}
 .hp_sliders p{line-height:120%;color:#aaa;text-align:justify;}
 .hp_sliders p span{display:block;overflow:hidden;height:77px;}
-.hp_sliders p a{color:#c55;text-decoration:none;position:relative;left:253px;}
-.hp_sliders a{color:#777;}
+.hp_sliders p a{position:relative;left:253px;}
 .hp_sliders h4{font-size:1.1em;}
 .hp_sliders h5{font-size:1.1em;}
 .hp_sliders ul{padding:0;}
 .hp_sliders ul li{list-style:none;padding:0;}
+.more{color:#c55;text-decoration:none;}
+.right{float:right;}
