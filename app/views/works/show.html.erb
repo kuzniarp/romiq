@@ -1,4 +1,15 @@
-<div class="grid_12">
+<%= javascript_include_tag 'jquery.prettyPhoto' %>
+<%= stylesheet_link_tag 'prettyPhoto' %>
+
+<div class="grid_12" style="text-align:justify;">
   <h2><%= @work.name %></h2>
+  <% @work.pictures.each do |picture| %>
+    <%= link_to image_tag(picture.url(:thumb), :class => "shadow-large", :alt => "", :style => "margin:0 5px;"), picture.url(:original), :rel => "prettyPhoto[gallery]" %>
+  <% end %>
   <%= @work.description %>
 </div>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+  $("a[rel^='prettyPhoto']").prettyPhoto({theme:'dark_square'});
+  });
+</script>
