@@ -5,4 +5,12 @@ class Category < ActiveRecord::Base
   def to_param
     permalink      
   end
+
+  def all_children
+    items = [self]
+    self.children.each do |child|
+      items += child.all_children
+    end
+    items
+  end
 end
