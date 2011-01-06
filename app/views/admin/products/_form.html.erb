@@ -7,12 +7,14 @@
       <label>Nazwa</label>
       <%= f.text_field :name, :class => "text-input small-input" %>
     </p>
-    
+
+<% if false %>
     <p>
       <label>Zdjecie</label>
       <%= image_tag @product.image.url(:thumb) if @product.image %>
       <%= f.file_field :image %>
     </p>
+<% end %>
 
     <p>
       <label>Opis</label>

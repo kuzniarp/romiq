@@ -53,6 +53,7 @@ ActionController::Routing::Routes.draw do |map|
   map.work '/galeria/:id', :controller => 'works', :action => 'show', :requirements => {:id => /\d/}
   map.works '/galeria', :controller => 'works', :action => 'index'
   map.works_category '/galeria/:category_id', :controller => 'works', :action => 'index'
+  map.product '/produkty/:id', :controller => 'products', :action => 'show', :requirements => {:id => /\d/}
   map.products '/produkty', :controller => 'products', :action => 'index'
   map.products_category '/produkty/:category_id', :controller => 'products', :action => 'index'
   map.resources :posts

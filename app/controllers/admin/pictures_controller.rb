@@ -8,7 +8,7 @@ class Admin::PicturesController < ApplicationController
       @picture.assetable_id = params[:assetable_id]
       @picture.assetable_type = params[:assetable_type]
       if @picture.save
-        render :partial => 'admin/works/picture', :object => @picture
+        render :partial => 'shared/picture', :object => @picture
       else
         render :text => "error"
       end
