@@ -1,11 +1,33 @@
 <div class="content-box">  
   <div class="content-box-header">    
     <h3>Edycja strony</h3>
-  </div>
-  
-  <div class="content-box-content">
-    <%= render :partial => "form" %>
+
+    <ul class="content-box-tabs">
+      <li><a href="#tab1" class="default-tab">Opis</a></li> <!-- href must be unique and match the id of target div -->
+      <% if @page.root.is_a? HomePage %>
+        <li><a href="#tab2">Zdjecia</a></li>
+      <% end %>
+    </ul>
     
-    <%= link_to 'Wróć', admin_pages_path %>
+    <div class="clear"></div>
+  </div>  
+  <div class="content-box-content">
+    <div class="tab-content default-tab" id="tab1"> <!-- This is the target div. id must match the href of this div's tab -->
+      <%= render :partial => "form" %>
+    
+      <%= link_to 'Wróć', admin_pages_path %>
+    </div>
+    <div class="tab-content" id="tab2">      
+      
+      <ul id="pictures_list">
+        <%= render :partial => 'shared/picture', :collection => @page.pictures %>
+      </ul>
+      <div class="clear"></div>
+
+      <%= swfupload_head %>
+
+      <%= swfupload :controller => '/admin/pictures', :action => 'create', :assetable_id => @page.id, :assetable_type => @page.class.to_s %>
+      
+    </div>
   </div>  
 </div>

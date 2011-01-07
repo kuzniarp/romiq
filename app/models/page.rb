@@ -1,7 +1,8 @@
 class Page < ActiveRecord::Base
 
   has_permalink :name
-
+  has_many :pictures, :as => :assetable
+  
   acts_as_tree :order => "item_order"
 
   named_scope :active, :conditions => {:status => true}
