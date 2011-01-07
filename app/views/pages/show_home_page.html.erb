@@ -22,13 +22,6 @@
 </div><!--//clearfix-->
 
 <div class="clearfix widget-area hp_sliders">
-  <% @page.children.active.each do |page| %>
-  <div class="grid_4 widget">
-    <h2><%= page.name %></h2>
-    <p><%= page.body %></p>
-  </div><!--//grid4-->
-  <% end %>
-
   <div class="grid_4 widget">
     <h4>AKTUALNOSCI</h4>
     <% if newest = Post.newest %>
