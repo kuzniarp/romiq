@@ -12,3 +12,8 @@
 .hp_sliders ul li{list-style:none;padding:0;}
 .more{color:#c55;text-decoration:none;}
 .right{float:right;}
+.transparent_bg{background:url('/images/transparency.png') repeat;}
+.promo_list{margin:0;padding:0;list-style:none;position:absolute;top:0;left:0;z-index:9999;width:100%;}
+.promo_list td{margin:0;padding:7px 5px;border-right:1px solid #999;border-bottom:1px solid #999;}
+.promo_list td a{color:#fff;text-transform:uppercase;font-size:11px;text-decoration:none;line-height:1.2em;}
+.promo_list td:hover{background:#444;}

@@ -1,23 +1,5 @@
 <div class="clearfix">
-  <div class="grid_12 promo-container">
-    <div id="promos">
-      <div class="promo"><a href="#"><img src="images/promos/home/horizontal-layout/promo01.jpg" alt="Promo" class="shadow-large" height="400" /></a></div>
-      <div class="promo alternate"><a href="#"><img src="images/promos/home/horizontal-layout/promo02.jpg" alt="Promo" class="shadow-large" height="400" /></a></div>
-      <div class="promo alternate"><a href="#"><img src="images/promos/home/horizontal-layout/promo03.jpg" alt="Promo" class="shadow-large" height="400" /></a></div>
-      <div class="promo alternate"><a href="#"><img src="images/promos/home/horizontal-layout/promo04.jpg" alt="Promo" class="shadow-large" height="400" /></a></div>
-      <div class="promo alternate"><a href="#"><img src="images/promos/home/horizontal-layout/promo05.jpg" alt="Promo" class="shadow-large" height="400" /></a></div>
-      <div class="promo alternate"><a href="#"><img src="images/promos/home/horizontal-layout/promo06.jpg" alt="Promo" class="shadow-large" height="400" /></a></div>
-    </div>
-    <div id="promo-nav" class="clearfix">
-      <ul class="clean right">
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-	<li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-	<li><a href="#">5</a></li>
-        <li><a href="#">6</a></li>
-      </ul>
-    </div>
+  <div class="grid_12 promo-container" id="promo_container" style="text-align:center;">
   </div><!--//grid10-->
 </div><!--//clearfix-->
 
@@ -81,8 +63,8 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $('#products_carousel').bxSlider({auto:true,controls:false,autoDelay:2500,pause:5000});
-    $('#works_carousel').bxSlider({auto:true,controls:false,pause:5000});
+    $('#products_carousel').cycle({fx:'scrollLeft',speed:500,timeout:5000,delay:-2500});
+    $('#works_carousel').cycle({fx:'scrollLeft',speed:500,timeout:5000});
+    <%= remote_function :url => {:controller => 'pages', :action => 'switch_promos'}, :update => 'promo_container', :loading => "$('#promo_container').append('#{image_tag('spinner.gif')}')" %>
   });
 </script>
-

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class PagesController < ApplicationController
   def show
     @page = params[:id].present? ? Page.find_by_permalink(params[:id]) : Page.home_page
@@ -11,6 +12,12 @@ class PagesController < ApplicationController
     else
       render :text => "Wystąpił problem z wysłaniem wiadomości. Spróbuj ponownie później."
     end
+  end
+
+  def switch_promos
+    @page = Page.find_by_id(params[:page_id])
+    @page = Page.home_page.children.first unless @page
+    render :partial => 'promo_container'
   end
 
   private

@@ -38,29 +38,7 @@ $(function(){
 	
 	
 	$("p.message").click(function(){ $(this).slideUp(500); });
-	
-	// Promo slider setup, inserted on when promo is in use to save bandwidth
-	
-	$('#promos').cycle({ 
-		fx:     'fade', 
-		speed:  1000, 
-		timeout: 3000,
-		pager: '#promo-nav',
-		pause: 1,
-		height: 'auto',
-		pauseOnPagerHover: 1,
-		fastOnEvent: 350,
-		pagerAnchorBuilder: function(idx, slide) { 
-			return "#promo-nav li:eq("+ idx +") a"; 
-		},
-    after: function(curr, next, opts, fwd){
-      //get the height of the current slide
-      var $ht = $(this).height();
-      //set the container's height to that of the current slide
-      $(this).parent().css("height", $ht);
-    }
-	});
-	
+		
 	// Fix applied so menu appears OVER cycled images
 	// Reverses the default z-index stacking order of the elements
 	var startIndex = 1500;
