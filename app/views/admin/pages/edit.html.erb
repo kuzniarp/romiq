@@ -26,7 +26,7 @@
 
       <%= swfupload_head %>
 
-      <%= swfupload :controller => '/admin/pictures', :action => 'create', :assetable_id => @page.id, :assetable_type => @page.class.to_s %>
+      <%= swfupload :controller => '/admin/pictures', :action => 'create', :assetable_id => @page.id, :assetable_type => @page.class.superclass.to_s %>
       
     </div>
   </div>  
