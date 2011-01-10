@@ -3,7 +3,7 @@
     <% promo_pages = Page.home_page.children.active %>    
     <% promo_pages.each do |page| %>
       <td>
-        <%= link_to_remote page.name, {:url => {:controller => 'pages', :action => 'switch_promos', :page_id => page.id}, :update => 'promo_container', :before => "$('#promos').cycle('stop')"}, {:title => strip_tags(page.body)} %>
+        <%= link_to_remote page.name, {:url => {:controller => 'pages', :action => 'switch_promos', :page_id => page.id}, :update => 'promo_container', :before => "$('#promos').bxSlider('stopShow')"}, {:title => strip_tags(page.body)} %>
       </td>
     <% end %>
     </tr>
@@ -15,32 +15,9 @@
       <% end %>
     </div>
     <div id="promo-nav" class="clearfix">
-      <ul class="clean right">
-        <% @page.pictures.size.times do |i| %>
-          <li><a href="#"><%= i %></a></li>
-        <% end %>
-      </ul>
+      <div id="promo-nav-inner" class="clean right"></div>
     </div>
     <script type="text/javascript">
     	// Promo slider setup, inserted on when promo is in use to save bandwidth
-	    
-	  $('#promos').cycle({ 
-		  fx:     'fade', 
-		  speed:  1000, 
-		  timeout: 3000,
-		  pager: '#promo-nav',
-		  pause: 1,
-		  height: 'auto',
-		  pauseOnPagerHover: 1,
-		  fastOnEvent: 350,
-		  pagerAnchorBuilder: function(idx, slide) { 
-			return "#promo-nav li:eq("+ idx +") a"; 
-		  },
-      after: function(curr, next, opts, fwd){
-      //get the height of the current slide
-      var $ht = $(this).height();
-      //set the container's height to that of the current slide
-      $(this).parent().css("height", $ht);
-      }
-	  });
+	    $('#promos').bxSlider({auto:true,controls:false,pause:3000,mode:'fade',speed:1000,pager:true,pagerSelector:'#promo-nav-inner',pagerActiveClass:'activeSlide',autoHover:true,stopAuto:false});
     </script>

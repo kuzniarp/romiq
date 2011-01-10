@@ -17,6 +17,7 @@ class PagesController < ApplicationController
   def switch_promos
     @page = Page.find_by_id(params[:page_id])
     @page = Page.home_page.children.first unless @page
+    #sleep(3)
     render :partial => 'promo_container'
   end
 

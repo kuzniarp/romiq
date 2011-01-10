@@ -63,8 +63,8 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $('#products_carousel').cycle({fx:'scrollLeft',speed:500,timeout:5000,delay:-2500});
-    $('#works_carousel').cycle({fx:'scrollLeft',speed:500,timeout:5000});
+    $('#products_carousel').bxSlider({auto:true,controls:false,pause:5000});
+    $('#works_carousel').bxSlider({auto:true,controls:false,pause:5000,autoDelay:2500});
     <%= remote_function :url => {:controller => 'pages', :action => 'switch_promos'}, :update => 'promo_container', :loading => "$('#promo_container').append('#{image_tag('spinner.gif')}')" %>
   });
 </script>

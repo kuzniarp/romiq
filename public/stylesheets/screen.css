@@ -201,7 +201,7 @@ hr.nopad
 	border-top:0;
 	padding:12px 10px 10px 10px;
 }
-#promo-nav UL LI a
+#promo-nav a
 {
 	border:1px solid #d4d4d4;
 	background:#fff;
@@ -212,12 +212,12 @@ hr.nopad
 	float:left;
 	margin-left:7px;
 }
-#promo-nav UL LI a:hover,
+#promo-nav a:hover,
 #promo-nav .activeSlide
 {
 	background:#d4d4d4;
 }
-#promo-nav UL LI a:active
+#promo-nav a:active
 {
 	background:#333;
 }
