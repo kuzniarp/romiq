@@ -47,6 +47,7 @@
 			startImage: '',											// string - filepath of image used for 'start' control. ex: 'images/start.jpg'
 			stopText: 'stop',										// string - text displayed for 'stop' control
 			stopImage: '',											// string - filepath of image used for 'stop' control. ex: 'images/stop.jpg'
+      stopAuto: false,                    // true, false - if true show is stopped when the pager link is clicked - my monkeypatch
 			ticker: false,											// true, false - continuous motion ticker mode (think news ticker)
 																					// note: autoControls, autoControlsSelector, and autoHover apply to ticker!
 			tickerSpeed: 5000,								  // float - use value between 1 and 5000 to determine ticker speed - the smaller the value the faster the ticker speed
@@ -1050,7 +1051,7 @@
 					if(options.moveSlideQty > 1){
 						slideIndex *= options.moveSlideQty;
 					}
-					base.goToSlide(slideIndex);
+					base.goToSlide(slideIndex,options.stopAuto)
 				}
 				return false;
 			});
