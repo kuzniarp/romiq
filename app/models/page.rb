@@ -7,6 +7,8 @@ class Page < ActiveRecord::Base
 
   named_scope :active, :conditions => {:status => true}
 
+  named_scope :with_pictures, :include => :pictures, :conditions => "assets.id is not null"
+
   before_save :update_header
 
   def to_param

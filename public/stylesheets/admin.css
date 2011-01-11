@@ -802,3 +802,4 @@ div.wysiwyg iframe { border: 0; margin: 5px 0 0 0; clear: left; width: 97.5% !im
 /*romi*/
 
 ul#pictures_list li{background:none;float:left;padding:10px;margin:0;height:100px;overflow:hidden;}
+ul#pictures_list li img{float:left;}
