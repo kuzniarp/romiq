@@ -27,6 +27,7 @@
                 
     <%= f.hidden_field :parent_id, :value => params[:parent_id] %>
     <%= f.hidden_field :type, :value => "StaticPage" %>
+    <%= f.hidden_field :item_order, :value => @default_order %>
     <p>
       <input class="button" type="submit" value="Zapisz" />
     </p>

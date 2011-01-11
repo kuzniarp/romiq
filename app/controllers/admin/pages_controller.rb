@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Admin::PagesController < ApplicationController
 
   layout "admin"
@@ -12,6 +13,8 @@ class Admin::PagesController < ApplicationController
 
   def new
     @page = Page.new
+    parent = Page.find_by_id(params[:parent_id])
+    @default_order = parent ? parent.children.count : Page.top_level_pages.count
   end
 
   def edit
