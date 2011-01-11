@@ -3,7 +3,7 @@
     <% promo_pages = Page.home_page.children.active.with_pictures %>    
     <% promo_pages.each do |page| %>
       <td>
-        <%= link_to_remote page.name, {:url => {:controller => 'pages', :action => 'switch_promos', :page_id => page.id}, :update => 'promo_container', :before => "$('#promos').bxSlider('stopShow')"}, {:title => strip_tags(page.body)} %>
+        <%= link_to_remote page.name, {:url => {:controller => 'pages', :action => 'switch_promos', :page_id => page.id}, :update => 'promo_container', :before => "$('#promos').bxSlider('stopShow')"}, {:title => strip_tags(page.body.to_s).gsub(/\r|\t|\n/,'')} %>
       </td>
     <% end %>
     </tr>
