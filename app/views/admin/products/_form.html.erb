@@ -24,16 +24,13 @@
     <p>
       <%= f.label 'product[category_ids][]', "Kategoria" %><br />
       <% # f.select 'categories', ProductCategory.all.map{|p| [p.name, p.id]} %><br />
-      <%= collection_select :product, :category_ids, ProductCategory.find(:all, :order => 'name ASC'), :id, :name, { :selected => @product.category_ids }, { :multiple => false, :name => 'product[category_ids][]' } -%>
+      <% # collection_select :product, :category_ids, ProductCategory.find(:all, :order => 'name ASC'), :id, :name, { :selected => @product.category_ids }, { :multiple => false, :name => 'product[category_ids][]' } -%>
 
-      <% if false %>
-      <% for category in ProductCategory.find(:all) %>
-      <div>
-	<%= check_box_tag "product[category_ids][]", category.id, @product.categories.include?(category) %>
-	<%= category.name %>
+
+      <div class="nested_lists">
+        <%= checkbox_category_list ProductCategory, @product %>
       </div>
-      <% end %>
-      <% end %>
+
     </p>
         
     <p>

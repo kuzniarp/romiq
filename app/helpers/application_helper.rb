@@ -30,4 +30,23 @@ module ApplicationHelper
     #	  list += content_tag(:li, link_to("Nowa", new_admin_category_path)) if admin
     list.present? ? content_tag(:ul, list, :style => 'margin:0;') : ''
   end
+
+  def checkbox_category_list model, obj
+    list = ''
+    roots = model.roots
+    roots.each do |root|
+      list += content_tag(:ul, content_tag(:li, check_box_tag("product[category_ids][]", root.id, obj.categories.include?(root)) + root.name + checkbox_subcategory_list(root, obj)))
+    end
+    list
+  end
+  
+  def checkbox_subcategory_list root, obj
+    list = ''
+    root.children.each do |cat|
+      list += content_tag(:li, check_box_tag("product[category_ids][]", cat.id, obj.categories.include?(cat)) + cat.name + checkbox_subcategory_list(cat, obj))
+    end  
+    #	  list += content_tag(:li, link_to("Nowa", new_admin_category_path)) if admin
+    list.present? ? content_tag(:ul, list, :style => 'margin:0;') : ''
+  end
+
 end
