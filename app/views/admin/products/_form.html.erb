@@ -21,17 +21,14 @@
       <%= f.cktext_area :description, :toolbar=>'Full', :width=>'99%', :language => 'pl' %>
     </p>
 
-    <p>
-      <%= f.label 'product[category_ids][]', "Kategoria" %><br />
-      <% # f.select 'categories', ProductCategory.all.map{|p| [p.name, p.id]} %><br />
+    <div class="nested_lists">
+      <%= f.label 'product[category_ids][]', "Kategoria" %>
+
+      <% # f.select 'categories', ProductCategory.all.map{|p| [p.name, p.id]} %>
       <% # collection_select :product, :category_ids, ProductCategory.find(:all, :order => 'name ASC'), :id, :name, { :selected => @product.category_ids }, { :multiple => false, :name => 'product[category_ids][]' } -%>
 
-
-      <div class="nested_lists">
-        <%= checkbox_category_list ProductCategory, @product %>
-      </div>
-
-    </p>
+      <%= checkbox_category_list ProductCategory, @product %>
+    </div>
         
     <p>
       <label>Status</label>
