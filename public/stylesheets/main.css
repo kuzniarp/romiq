@@ -1,6 +1,9 @@
 .nested_lists ul {list-style:none;padding:0;margin:0;}
 .nested_lists li {padding:0 0 0 10px;margin:0;}
-.nested_lists li a{text-decoration:none;}
+.nested_lists li {color:#CC5555;font-style:italic;} /* active */
+.nested_lists li a{text-decoration:none;font-style:normal;color:#666;}
+.nested_lists li a:hover{color:#999;}
+
 .hp_sliders {padding:0;}
 .hp_sliders h4, .hp_sliders h5, .hp_sliders p{padding:0;color:#777}
 .hp_sliders p{line-height:120%;color:#aaa;text-align:justify;}

@@ -12,20 +12,20 @@ module ApplicationHelper
     end    
   end
   
-  def category_list model, admin = false
+  def category_list model, admin = false, active = nil
     list = ''
     roots = model.roots
     roots.each do |root|
-      list += content_tag(:ul, content_tag(:li, link_to(root.name, (admin ? edit_admin_category_path(root) : (model == ProductCategory ? products_category_path(root) : works_category_path(root)))) + (link_to(" +", new_admin_category_path(:parent_id => root.id, :type => model)) if admin).to_s + subcategory_list(root, admin)))
+      list += content_tag(:ul, content_tag(:li, link_to_if(active != root, root.name, (admin ? edit_admin_category_path(root) : (model == ProductCategory ? products_category_path(root) : works_category_path(root))), :class => ('active' if active == root)) + (link_to(" +", new_admin_category_path(:parent_id => root.id, :type => model)) if admin).to_s + subcategory_list(root, admin, active)))
     end
     list += link_to("Dodaj kategorie glowna", new_admin_category_path(:type => model)) if admin
     list
   end
   
-  def subcategory_list root, admin
+  def subcategory_list root, admin, active
     list = ''
     root.children.each do |cat|
-      list += content_tag(:li, link_to(cat.name, (admin ? edit_admin_category_path(cat) : (cat.class == ProductCategory ? products_category_path(cat) : works_category_path(cat)))) + (link_to(" +", new_admin_category_path(:parent_id => cat.id, :type => cat.class)) if admin).to_s + subcategory_list(cat, admin))
+      list += content_tag(:li, link_to_if(active != cat, cat.name, (admin ? edit_admin_category_path(cat) : (cat.class == ProductCategory ? products_category_path(cat) : works_category_path(cat))), :class => ('active' if active == cat)) + (link_to(" +", new_admin_category_path(:parent_id => cat.id, :type => cat.class)) if admin).to_s + subcategory_list(cat, admin, active))
     end  
     #	  list += content_tag(:li, link_to("Nowa", new_admin_category_path)) if admin
     list.present? ? content_tag(:ul, list, :style => 'margin:0;') : ''

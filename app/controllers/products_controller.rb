@@ -1,8 +1,8 @@
-class ProductsController < ApplicationController
-  
+class ProductsController < ApplicationController  
   def index
     if params[:category_id]      	  
-      @products = ProductCategory.find_by_permalink(params[:category_id]).products #all_children.map{|c| c.products}.flatten
+      @category = ProductCategory.find_by_permalink(params[:category_id])
+      @products = @category ? @category.products : [] #all_children.map{|c| c.products}.flatten
 	  else
       @products = Product.all(:order => "created_at desc", :limit => 5)
 	  end

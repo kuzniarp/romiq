@@ -1,6 +1,6 @@
 <div class="grid_3 nested_lists">
   <h3>Kategorie</h3>
-  <%= category_list ProductCategory %>
+  <%= category_list ProductCategory, false, @category %>
 </div>
 <div class="grid_9" style="margin:0;">
   <% for product in @products do %>
