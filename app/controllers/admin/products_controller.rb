@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
 class Admin::ProductsController < ApplicationController
 
   layout "admin"
 
   def index
     @products = Product.all(:order => "created_at desc")
+    @features = Feature.all
   end
 
   def show

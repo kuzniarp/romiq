@@ -1,0 +1,28 @@
+<% form_for([:admin,  @option]) do |f| %>
+  <%= f.error_messages %>
+  
+  <fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
+    
+    <p>
+      <label>Nazwa</label>
+      <%= f.text_field :name, :class => "text-input small-input" %>
+    </p>
+    <% feature = @option.feature || Feature.find_by_id(params[:feature_id]) %>
+    <% if feature.is_a? ColorFeature %>
+      <p>
+        <label>Kod koloru</label>
+        <%= f.text_field :color_code, :class => "text-input small-input", :style => "float:left;" %>
+        <div style="float:left;width:20px;height:20px;background:#<%= @option.color_code %>;">&nbsp;</div>
+      </p>
+    <% end %>
+    <div class="clear"></div>
+    <%= f.hidden_field :feature_id, :value => @option.feature_id || params[:feature_id] %>
+          
+    <p>
+      <input class="button" type="submit" value="Zapisz" />
+    </p>
+    
+  </fieldset>
+  
+  <div class="clear"></div><!-- End .clear -->
+<% end %>

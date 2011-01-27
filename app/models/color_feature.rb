@@ -1,0 +1,2 @@
+class ColorFeature < Feature
+end

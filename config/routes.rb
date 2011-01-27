@@ -48,6 +48,10 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :product_categories, :controller => "categories"
     admin.resources :work_categories, :controller => "categories"
     admin.resources :pictures#, :only => [:create, :delete]
+    admin.resources :features
+    admin.resources :text_features, :controller => 'features'
+    admin.resources :color_features, :controller => 'features'
+    admin.resources :options
   end
     
   map.work '/galeria/:id', :controller => 'works', :action => 'show', :requirements => {:id => /\d/}

@@ -7,6 +7,7 @@
     <ul class="content-box-tabs">
       <li><a href="#tab1" class="default-tab">Produkty</a></li> <!-- href must be unique and match the id of target div -->
       <li><a href="#tab2">Kategorie</a></li>
+      <li><a href="#tab3">Cechy i opcje</a></li>
     </ul>
     
     <div class="clear"></div>
@@ -71,6 +72,26 @@
     <div class="tab-content" id="tab2"> <!-- This is the target div. id must match the href of this div's tab -->
       <h3>Kategorie</h3>
       <%= category_list ProductCategory, true %>
+    </div>
+
+    <div class="tab-content" id="tab3"> <!-- This is the target div. id must match the href of this div's tab -->
+      <h3>Cechy i opcje</h3>
+      <ul>
+        <% @features.each do |feature| %>
+          <li>
+            <%= link_to feature.name, edit_admin_feature_path(feature) %>
+            <%= link_to '+', new_admin_option_path(:feature_id => feature.id) %>
+            <% if feature.options.present? %>
+              <ul>
+                <% feature.options.each do |option| %>
+                  <li><%= link_to option.name, edit_admin_option_path(option) %></li>
+                <% end %>
+              </ul>
+            <% end %>
+          </li>
+        <% end %>        
+      </ul>
+      <%= link_to 'Dodaj nowa ceche', new_admin_feature_path %>
     </div>
 
   </div> <!-- End .content-box-content -->

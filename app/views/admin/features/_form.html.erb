@@ -1,0 +1,24 @@
+<% form_for([:admin,  @feature]) do |f| %>
+  <%= f.error_messages %>
+<% fields_for :feature do |f| %>
+  <fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
+    
+    <p>
+      <label>Nazwa</label>
+      <%= f.text_field :name, :class => "text-input small-input" %>
+    </p>
+
+    <p>
+      <label>Typ</label>
+      <%= f.select :type, [['Tekst','TextFeature'],['Kolor','ColorFeature']] %>
+    </p>
+
+    <p>
+      <input class="button" type="submit" value="Zapisz" />
+    </p>
+    
+  </fieldset>
+  
+  <div class="clear"></div><!-- End .clear -->
+<% end %>
+<% end %>
