@@ -43,4 +43,15 @@ class Admin::OptionsController < ApplicationController
       format.html { redirect_to(admin_products_path) }
     end
   end
+
+  def for_feature
+    if params[:feature_id].present?
+      feature = Feature.find_by_id(params[:feature_id])
+      @product = Product.find_by_id(params[:product_id])
+      @options = feature.options
+      render :partial => '/admin/products/product_option_form'
+    else
+      render :nothing => true
+    end
+  end
 end

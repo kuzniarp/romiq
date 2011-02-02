@@ -1,0 +1,5 @@
+<% form_for [:admin, ProductOption.new] do |f| %>
+  <%= f.hidden_field :product_id, :value => @product.id %>
+  <%= f.select :option_id, @options.to_a.map{|p| [p.name, p.id]} %>
+  <%= f.submit %>
+<% end %>

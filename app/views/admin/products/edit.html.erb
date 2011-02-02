@@ -5,6 +5,7 @@
     <ul class="content-box-tabs">
       <li><a href="#tab1" class="default-tab">Opis</a></li> <!-- href must be unique and match the id of target div -->
       <li><a href="#tab2">Zdjecia</a></li>
+      <li><a href="#tab3">Kombinacje atrybutow</a></li>
     </ul>
     
     <div class="clear"></div>
@@ -26,6 +27,19 @@
     
       <%= swfupload :controller => '/admin/pictures', :action => 'create', :assetable_id => @product.id, :assetable_type => @product.class.to_s %>
     
+    </div>  
+    <div class="tab-content" id="tab3">
+      <% #= link_to 'Dodaj kombinacje', new_admin_product_option_path %>
+      <%= select_tag :feature, options_for_select([['Wybierz',nil]]+Feature.all.map{|p| [p.name, p.id]}), :onchange => remote_function(:update => 'product_option_form', :url => for_feature_admin_options_path, :with => "'feature_id='+this.value + '&product_id=#{@product.id}'") %>
+      <div id="product_option_form"></div>
+      <ul>
+      <% @product.product_options.each do |product_option| %>
+        <li>
+        <%= product_option.option.feature.name %>
+        <%= product_option.option.name %>
+        </li>
+      <% end %>
+      </ul>
     </div>  
   </div>
 </div>

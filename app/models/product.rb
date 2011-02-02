@@ -10,6 +10,8 @@ class Product < ActiveRecord::Base
   has_many :category_items, :as => :item
   has_many :categories, :through => :category_items
 
+  has_many :product_options
+
   named_scope :active, :conditions => {:status => true}
 
   def self.newest limit=1
