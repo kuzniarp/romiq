@@ -29,14 +29,16 @@
     
     </div>  
     <div class="tab-content" id="tab3">
-      <% #= link_to 'Dodaj kombinacje', new_admin_product_option_path %>
+      <p>
+        Cecha:
       <%= select_tag :feature, options_for_select([['Wybierz',nil]]+Feature.all.map{|p| [p.name, p.id]}), :onchange => remote_function(:update => 'product_option_form', :url => for_feature_admin_options_path, :with => "'feature_id='+this.value + '&product_id=#{@product.id}'") %>
+      </p>
       <div id="product_option_form"></div>
       <ul>
       <% @product.product_options.each do |product_option| %>
-        <li>
-        <%= product_option.option.feature.name %>
-        <%= product_option.option.name %>
+        <li>          
+        <%= link_to product_option.long_name, edit_admin_product_option_path(product_option) %>
+        <%= link_to '-', admin_product_option_path(product_option), :method => :delete %>
         </li>
       <% end %>
       </ul>

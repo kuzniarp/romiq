@@ -1,0 +1,23 @@
+<% form_for([:admin,  @product_option]) do |f| %>
+  <%= f.error_messages %>  
+  <fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
+    
+    <p>
+      <%= @product_option.long_name %>
+    </p>
+    <p>
+    <% @product_option.product.pictures.each do |picture| %>
+      <%= check_box_tag "product_option[picture_ids][]", picture.id, @product_option.pictures.include?(picture) %>
+      <%= image_tag picture.url(:thumb) %>
+    <% end %>
+    </p>
+    <p>
+      <input class="button" type="submit" value="Zapisz" />
+    </p>
+    
+  </fieldset>
+  
+  <div class="clear"></div><!-- End .clear -->
+
+<% end %>
+<%= link_to 'Wroc', edit_admin_product_path(@product_option.product) %>)

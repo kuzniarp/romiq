@@ -6,11 +6,11 @@ class Product < ActiveRecord::Base
 
   has_permalink :name, :unique => true, :to_param => :permalink
 
-  has_many :pictures, :as => :assetable
-  has_many :category_items, :as => :item
+  has_many :pictures, :as => :assetable, :dependent => :destroy
+  has_many :category_items, :as => :item, :dependent => :destroy
   has_many :categories, :through => :category_items
 
-  has_many :product_options
+  has_many :product_options, :dependent => :destroy
 
   named_scope :active, :conditions => {:status => true}
 

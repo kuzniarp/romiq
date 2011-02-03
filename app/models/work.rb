@@ -1,7 +1,7 @@
 class Work < ActiveRecord::Base
 
-  has_many :pictures, :as => :assetable
-  has_many :category_items, :as => :item
+  has_many :pictures, :as => :assetable, :dependent => :destroy
+  has_many :category_items, :as => :item, :dependent => :destroy
   has_many :categories, :through => :category_items
 
   named_scope :active, :conditions => {:status => true}

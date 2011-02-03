@@ -1,5 +1,15 @@
 <% form_for [:admin, ProductOption.new] do |f| %>
   <%= f.hidden_field :product_id, :value => @product.id %>
-  <%= f.select :option_id, @options.to_a.map{|p| [p.name, p.id]} %>
-  <%= f.submit %>
+  <p>
+  Opcja: 
+  <%= f.select :option_id, @options.to_a.map{|p| [p.name, p.id]} %><br />
+  </p>
+  <p>
+    Wybierz zdjecia, ktore odnosza sie do wybranej opcji:<br />
+  <% @product.pictures.each do |picture| %>
+    <%= check_box_tag "product_option[picture_ids][]", picture.id, false %>
+    <%= image_tag picture.url(:thumb) %>
+  <% end %>
+  </p>
+  <%= f.submit 'Dodaj' %>
 <% end %>

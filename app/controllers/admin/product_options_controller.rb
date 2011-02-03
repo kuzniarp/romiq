@@ -27,20 +27,21 @@ class Admin::ProductOptionsController < ApplicationController
     @product_option = ProductOption.find_by_id(params[:id])    
     respond_to do |format|
       if @product_option.update_attributes(params[:product_option])
-        flash[:notice] = 'Opcja zostala zmieniona.'
-        format.html { redirect_to(admin_products_path) }
+        flash[:notice] = 'Kombinacja zostala zmieniona.'
+        format.html { redirect_to(edit_admin_product_path(@product_option.product)) }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to(edit_admin_product_path(@product_option.product)) }
       end
     end
   end
 
   def destroy
     @product_option = ProductOption.find_by_id(params[:id])
+    product = @product_option.product
     @product_option.destroy
     
     respond_to do |format|
-      format.html { redirect_to(admin_products_path) }
+      format.html { redirect_to(edit_admin_product_path(product)) }
     end
   end
 end
