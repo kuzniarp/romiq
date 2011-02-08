@@ -1,0 +1,1 @@
+<%= @options.first.feature.name if @options.present? %>: <%= select_tag "option_combination[option_ids][]", options_for_select(@options.to_a.map{|p| [p.name, p.id]}) %> <%= submit_tag 'Dodaj' %>

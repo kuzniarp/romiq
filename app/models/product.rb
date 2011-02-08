@@ -10,7 +10,8 @@ class Product < ActiveRecord::Base
   has_many :category_items, :as => :item, :dependent => :destroy
   has_many :categories, :through => :category_items
 
-  has_many :product_options, :dependent => :destroy
+#  has_many :product_options, :dependent => :destroy
+  has_many :option_combinations, :dependent => :destroy
 
   named_scope :active, :conditions => {:status => true}
 

@@ -15,7 +15,8 @@ class Picture < Asset
   #   updated_at        : datetime 
   # =======================
   belongs_to :assetable, :polymorphic => true
-  has_many :product_option_pictures, :dependent => :destroy
+  #has_many :product_option_pictures, :dependent => :destroy
+  has_many :option_combination_pictures, :dependent => :destroy
   has_attached_file :data,
                     :url  => "/assets/pictures/:id/:style_:basename.:extension",
                     :path => ":rails_root/public/assets/pictures/:id/:style_:basename.:extension",

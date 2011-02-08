@@ -53,6 +53,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :color_features, :controller => 'features'
     admin.resources :options, :collection => {:for_feature => :post}
     admin.resources :product_options
+    admin.resources :option_combinations, :collection => {:add_option => :post}
   end
     
   map.work '/galeria/:id', :controller => 'works', :action => 'show', :requirements => {:id => /\d/}

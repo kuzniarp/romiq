@@ -47,9 +47,9 @@ class Admin::OptionsController < ApplicationController
   def for_feature
     if params[:feature_id].present?
       feature = Feature.find_by_id(params[:feature_id])
-      @product = Product.find_by_id(params[:product_id])
+#      @product = Product.find_by_id(params[:product_id])
       @options = feature.options
-      render :partial => '/admin/products/product_option_form'
+      render :partial => '/admin/products/option_combination_form_options'
     else
       render :nothing => true
     end
