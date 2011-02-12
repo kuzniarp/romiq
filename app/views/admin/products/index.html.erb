@@ -80,11 +80,11 @@
         <% @features.each do |feature| %>
           <li>
             <%= link_to feature.name, edit_admin_feature_path(feature) %>
-            <%= link_to '+', new_admin_option_path(:feature_id => feature.id) %>
+            <%= link_to image_tag("icons/plus.png"), new_admin_option_path(:feature_id => feature.id), :title => "Dodaj nowa ceche" %>
             <% if feature.options.present? %>
               <ul>
                 <% feature.options.each do |option| %>
-                  <li><%= link_to option.name, edit_admin_option_path(option) %></li>
+                  <li><%= link_to option.name + ' ' + image_tag("icons/pencil.png"), edit_admin_option_path(option) %></li>
                 <% end %>
               </ul>
             <% end %>

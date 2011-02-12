@@ -8,6 +8,6 @@ class OptionCombination < ActiveRecord::Base
 
 
   def long_name
-    "#{self.options.map{|o| o.feature.name.to_s + ' ' + o.name.to_s}.join(' ')}"
+    "#{self.options.map{|o| o.feature.name.to_s + ': ' + o.name.to_s}.join(', ')}"
   end
 end

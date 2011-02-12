@@ -6,7 +6,7 @@ function insert_option(option_id,option_name){
 var container = $('#options_list');
 var option_name = option_id.split("-")[1];
 var option_id = option_id.split("-")[0];
-var new_option = '<li><input type="hidden" value="' + option_id + '" name="option_combination[option_ids][]"/> ' + option_name + '</li>'; //replace with jquery element
+var new_option = '<li><input type="hidden" value="' + option_id + '" name="option_combination[option_ids][]"/> ' + option_name + ' <%= link_to_function image_tag("icons/cross.png"), "remove_option(this);"%></li>'; //replace with jquery element
 container.append(new_option);
 console.log(option_id);
 return false;

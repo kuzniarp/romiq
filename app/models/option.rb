@@ -5,6 +5,6 @@ class Option < ActiveRecord::Base
   has_many :pictures, :as => :assetable, :dependent => :destroy
 
   def long_name
-    "#{self.feature.name} #{self.name}"
+    "#{self.feature.name}: #{self.name}"
   end
 end
