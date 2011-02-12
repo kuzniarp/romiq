@@ -1,13 +1,22 @@
 class Admin::OptionCombinationsController < ApplicationController
   layout "admin"
   
+  def new
+    @product = Product.find_by_id(params[:product_id])
+    @option_combination = OptionCombination.new
+    @option_combination.product = @product
+    respond_to do |format|
+      format.js { render :partial => 'admin/products/option_combination_form' }
+    end
+  end
+  
   def create
     @option_combination = OptionCombination.new(params[:option_combination])
 
     respond_to do |format|
       if @option_combination.save
         @product = @option_combination.product
-        flash[:notice] = 'Nowa opcja zostala dodana.'
+        flash[:notice] = 'Nowa kombinacja zostala zapisana.'
         format.js { render :partial => 'admin/products/option_combination_form' }
         format.html { redirect_to(edit_admin_product_path(@option_combination.product)) }
       else
@@ -18,6 +27,10 @@ class Admin::OptionCombinationsController < ApplicationController
 
   def edit
     @option_combination = OptionCombination.find_by_id(params[:id])
+    @product = @option_combination.product
+    respond_to do |format|
+      format.js { render :partial => 'admin/products/option_combination_form' }
+    end
   end
 
   def update
@@ -36,11 +49,12 @@ class Admin::OptionCombinationsController < ApplicationController
 
   def destroy
     @option_combination = OptionCombination.find_by_id(params[:id])
-    product = @option_combination.product
+    @product = @option_combination.product
     @option_combination.destroy
-    
+    @option_combination = nil
     respond_to do |format|
-      format.html { redirect_to(edit_admin_product_path(product)) }
+      format.js { render :partial => 'admin/products/option_combination_form' }
+      format.html { redirect_to(edit_admin_product_path(@product)) }
     end
   end
 end

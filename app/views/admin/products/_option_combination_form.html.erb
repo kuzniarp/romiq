@@ -1,10 +1,7 @@
 <% @option_combination ||= OptionCombination.new %>
 <% form_remote_for [:admin, @option_combination], :update => "option_combination_form" do |f| %>
   <%= f.hidden_field :product_id, :value => @product.id %>
-  <p>
-  <div id="option_combination_form_options"></div>
-  </p>
-  <ul>
+  <ul id="options_list">
     <% @option_combination.options.each do |option| %>      
       <li>
         <%= hidden_field_tag "option_combination[option_ids][]", option.id %>
@@ -15,10 +12,23 @@
   <p>
     Wybierz zdjecia, ktore odnosza sie do wybranej opcji:<br />
   <% @product.pictures.each do |picture| %>
-    <%= check_box_tag "option_combination[picture_ids][]", picture.id, @option_combination.pictures.include?(picture), :disabled => @option_combination.new_record?, :onclick => "this.form.commit.click();" %>
+    <%= check_box_tag "option_combination[picture_ids][]", picture.id, @option_combination.pictures.include?(picture) %>
     <%= image_tag picture.url(:thumb) %>
   <% end %>
   </p>
-  <%= f.submit 'Zapisz', :name => 'commit', :style => 'display: none;' %>
-  <%= link_to('Usun', admin_option_combination_path(@option_combination), :method => :delete) unless @option_combination.new_record? %>
+  <%= f.submit 'Zapisz', :name => 'commit' %>
+  <% unless @option_combination.new_record? %>    
+    <%= link_to_remote 'Usun', :url => admin_option_combination_path(@option_combination), :update => "option_combination_form", :method => :delete %>
+    <%= link_to_remote('Nowa kombinacja', :url => new_admin_option_combination_path(:product_id => @product.id), :update => "option_combination_form", :method => :get) %>
+  <% end %>
+  <br /><%= flash[:notice] %>
 <% end %>
+<hr />
+<ul>
+  <% @product.option_combinations.each do |option_combination| %>
+    <li>          
+      <%= link_to_remote option_combination.long_name, :url => edit_admin_option_combination_path(option_combination), :update => "option_combination_form", :method => :get %>
+      <%= link_to_remote '-', :url => admin_option_combination_path(option_combination), :update => "option_combination_form", :method => :delete %>
+    </li>
+  <% end %>
+</ul>

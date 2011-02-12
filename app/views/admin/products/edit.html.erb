@@ -29,23 +29,14 @@
     
     </div>  
     <div class="tab-content" id="tab3">
-      <div class="fieldset">
       <p>
         Cecha:
       <%= select_tag :feature, options_for_select([['Wybierz',nil]]+Feature.all.map{|p| [p.name, p.id]}), :onchange => remote_function(:update => 'option_combination_form_options', :url => for_feature_admin_options_path, :with => "'feature_id='+this.value + '&product_id=#{@product.id}'") %>
       </p>
+      <div id="option_combination_form_options"></div>
       <div id="option_combination_form">
         <%= render :partial => "option_combination_form" %>
       </div>
-      </div>
-      <ul>
-      <% @product.option_combinations.each do |option_combination| %>
-        <li>          
-        <%= link_to option_combination.long_name, edit_admin_option_combination_path(option_combination) %>
-        <%= link_to '-', admin_option_combination_path(option_combination), :method => :delete %>
-        </li>
-      <% end %>
-      </ul>
     </div>  
   </div>
 </div>
