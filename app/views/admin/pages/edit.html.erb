@@ -23,7 +23,9 @@
         <%= render :partial => 'shared/picture', :collection => @page.pictures %>
       </ul>
       <div class="clear"></div>
-
+      <p>
+        Optymalny rozmiar zdjec: 940x400,72dpi
+      </p>
       <%= swfupload_head %>
 
       <%= swfupload :controller => '/admin/pictures', :action => 'create', :assetable_id => @page.id, :assetable_type => @page.class.superclass.to_s %>
