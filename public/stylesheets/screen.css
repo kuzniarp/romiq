@@ -25,7 +25,7 @@ body, .standardForm .textarea
 }
 body
 {
-	background:#333;
+	background:#F7F7F7;
 	font-size:0.8em;
 	color:#999;
 	line-height:175%;
@@ -33,9 +33,6 @@ body
 #main
 {
 	background:#f7f7f7 url(../images/body_gradiant.jpg) repeat-x top left;
-	margin-top:10px;
-	border-top:1px solid #fff;
-	border-bottom:1px solid #fff;
 }
 p, h1, h2, h3, h4, h5, h6
 {

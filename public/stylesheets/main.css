@@ -22,3 +22,17 @@
 .promo_list td{margin:0;border-right:1px solid #999;border-bottom:1px solid #999;}
 .promo_list td a{color:#fff;text-transform:uppercase;font-size:11px;text-decoration:none;line-height:1.2em;padding:7px 5px;display:block;width:100%;}
 .promo_list td:hover{background:#444;}
+
+html, body {
+height: 100%;
+}
+#outer {
+min-height: 100%;
+height: auto !important;
+height: 100%;
+margin: 0 auto -100px;
+}
+#footer, .push {
+height: 100px;
+padding:0;margin:0;
+}
