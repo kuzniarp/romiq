@@ -17,7 +17,7 @@
 </div><!--//clearfix-->
 <div class="clearfix widget-area hp_sliders">
   <div class="grid_4 widget">
-    <h4>AKTUALNOSCI</h4>
+    <h4><%= link_to "AKTUALNOSCI", posts_path %></h4>
     <% if newest = Post.newest %>
       <p>
         <span>
@@ -30,7 +30,7 @@
   </div><!--//grid4-->
 
   <div class="grid_4 widget">
-    <h4>NOWE PRODUKTY</h4>
+    <h4><%= link_to "NOWE PRODUKTY", products_path %></h4>
     <% if newest = Product.newest(5) %>
     <ul id="products_carousel">
     <% newest.each do |product| %>
@@ -49,7 +49,7 @@
   </div><!--//grid4-->
 
   <div class="grid_4 widget">
-    <h4>NOWE GALERIE</h4>
+    <h4><%= link_to "NOWE GALERIE", works_path %></h4>
     <% if newest = Work.newest(5) %>
     <ul id="works_carousel">
     <% newest.each do |work| %>
