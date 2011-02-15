@@ -19,8 +19,8 @@
   <%= f.submit 'Zapisz', :name => 'commit' %>
   <% unless @option_combination.new_record? %>    
     <%= link_to_remote 'Usun', :url => admin_option_combination_path(@option_combination), :update => "option_combination_form", :method => :delete %>
-    <%= link_to_remote('Nowa kombinacja', :url => new_admin_option_combination_path(:product_id => @product.id), :update => "option_combination_form", :method => :get) %>
   <% end %>
+  <%= link_to_remote('Nowa kombinacja', :url => new_admin_option_combination_path(:product_id => @product.id), :update => "option_combination_form", :method => :get) %>
   <br /><%= flash[:notice] %>
 <% end %>
 <hr />
