@@ -24,7 +24,15 @@
               </span>
               <% options.each do |option| %>
                 <span class="color_option_wrapper">
-                  <label for="<%= "color_#{option.id}" %>"><span class="color_option_label" style="background:#<%= option.color_code %>;">&nbsp;</span></label>
+                  <label for="<%= "color_#{option.id}" %>">
+                    <% if option.texture.present? %>
+                      <span style="display:block;"><%= image_tag option.texture.url(:thumb) %></span>
+                    <% elsif option.color_code.present? %>
+                      <span class="color_option_label" style="background:#<%= option.color_code %>;">&nbsp;</span>
+                    <% else %>
+                      <span class="color_option_label" style="height:36px;width:36px;border:1px solid #999;"><%= option.name %></span>
+                    <% end %>
+                  </label>
                   <%= radio_button_tag "options[]", option.id, option_ids.include?(option.id), {:id => "color_#{option.id}", :onclick => "this.form.submit.click();"} %>
                 </span>
               <% end %>

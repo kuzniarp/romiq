@@ -1,4 +1,4 @@
-<% form_for([:admin,  @option]) do |f| %>
+<% form_for([:admin,  setup_option(@option)], :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
   
   <fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
@@ -11,8 +11,16 @@
     <% if feature.is_a? ColorFeature %>
       <p>
         <label>Kod koloru</label>
+        <div style="width:38px;height:38px;background:#<%= @option.color_code %>;">&nbsp;</div><br />
         <%= f.text_field :color_code, :class => "text-input small-input", :style => "float:left;" %>
-        <div style="float:left;width:20px;height:20px;background:#<%= @option.color_code %>;">&nbsp;</div>
+        <div class="clear"></div>
+      </p>
+      <p>
+        <label>Tekstura</label>
+        <% f.fields_for :texture do |form| %>
+        <%= image_tag(@option.texture.url(:thumb)) if @option.texture %><br />
+        <%= form.file_field :data, :class => "text-input small-input", :style => "float:left;" %>
+        <% end %>
       </p>
     <% end %>
     <div class="clear"></div>
