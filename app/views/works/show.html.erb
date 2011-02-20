@@ -19,5 +19,5 @@
 </div>
 <script>
   var myNewFlow = new ContentFlow('ContentFlow', { reflectionHeight: 0.2, startItem: 0, onclickActiveItem: function(item){return false;} } );
-  $("a.item").fancybox({transitionIn: 'elastic', transitionOut: 'elastic', overlayShow: false, padding: 0, margin: 0, hideOnContentClick:true, showCloseButton:false, onStart: function(item){if(!$(item).hasClass('active')){ return false;}}});
+  $("a.item").fancybox({transitionIn: 'elastic', transitionOut: 'elastic', overlayShow: true, padding: 0, margin: 0, hideOnContentClick:true, showCloseButton:false, onStart: function(item){if(!$(item).hasClass('active')){ return false;}}});
 </script>

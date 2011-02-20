@@ -41,11 +41,11 @@ $(function(){
 		
 	// Fix applied so menu appears OVER cycled images
 	// Reverses the default z-index stacking order of the elements
-//	var startIndex = 1500;
-//	$('div').each(function() {
-//		$(this).css('zIndex', startIndex);
-//		startIndex -= 5;
-//	});
+	var startIndex = 1099;
+	$('div').each(function() {
+		$(this).css('zIndex', startIndex);
+		startIndex -= 1;
+	});
 	
 
 });// end jquery
