@@ -4,11 +4,11 @@
 <div class="grid_12" style="text-align:justify;overflow:hidden;">
   <h2><%= @work.name %></h2>
   
-  <div class="ContentFlow" id="ContentFlow" style="margin-bottom:40px;">
+  <div class="ContentFlow" id="ContentFlow" style="margin-bottom:80px;">
     <div class="loadIndicator"><div class="indicator"></div></div>
-    <div class="flow" style="width:200%;margin:-10% 0 0 -50%;">
+    <div class="flow" style="width:200%;margin:-8% 0 0 -50%;">
       <% @work.pictures.each do |picture| %>
-        <%= link_to image_tag(picture.url(:content), :class => "content", :alt => ""), picture.url(:original), :class => "item" %>  %>
+        <%= link_to image_tag(picture.url(:content), :class => "content", :alt => ""), picture.url(:original), :class => "item" %>
       <% end %>
     </div>
   </div>
@@ -18,6 +18,6 @@
   <%= @work.description %>
 </div>
 <script>
-  var myNewFlow = new ContentFlow('ContentFlow', { reflectionHeight: 0, startItem: 0, onclickActiveItem: function(item){return false;} } );
+  var myNewFlow = new ContentFlow('ContentFlow', { reflectionHeight: 0.2, startItem: 0, onclickActiveItem: function(item){return false;} } );
   $("a.item").fancybox({transitionIn: 'elastic', transitionOut: 'elastic', overlayShow: false, padding: 0, margin: 0, hideOnContentClick:true, showCloseButton:false, onStart: function(item){if(!$(item).hasClass('active')){ return false;}}});
 </script>
