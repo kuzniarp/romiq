@@ -3,13 +3,20 @@
 
 <div class="grid_12" style="text-align:justify;">
   <h2><%= @work.name %></h2>
-  <% @work.pictures.each do |picture| %>
-    <%= link_to image_tag(picture.url(:thumb), :class => "shadow-large", :alt => "", :style => "margin:0 5px;"), picture.url(:original), :rel => "prettyPhoto[gallery]" %>
+  
+  <div class="ContentFlow" id="ContentFlow" style="margin-bottom:20px;">
+    <div class="loadIndicator"><div class="indicator"></div></div>
+    <div class="flow" style="width:200%;margin:-10% 0 0 -50%;">
+      <% @work.pictures.each do |picture| %>
+        <%= image_tag(picture.url(:content), :class => "item", :alt => "") %>        
+      <% end %>
+    </div>
+  </div>
+  <% @work.pictures.each_with_index do |picture,i| %>
+    <%= link_to_function image_tag(picture.url(:thumb), :class => "item", :alt => ""), "myNewFlow.moveTo(#{i});"  %>
   <% end %>
   <%= @work.description %>
 </div>
-<script type="text/javascript" charset="utf-8">
-  $(document).ready(function(){
-  $("a[rel^='prettyPhoto']").prettyPhoto({theme:'dark_square'});
-  });
+<script>
+  var myNewFlow = new ContentFlow('ContentFlow', { reflectionHeight: 0, startItem: 0 } );
 </script>
