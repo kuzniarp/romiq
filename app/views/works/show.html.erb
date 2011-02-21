@@ -2,7 +2,8 @@
 <%= stylesheet_link_tag 'prettyPhoto' %>
 
 <div class="grid_12" style="text-align:justify;overflow:hidden;">
-  <h2><%= @work.name %></h2>
+  <%= link_to "<< powrót", :back, :class => "more", :style => "z-index:1090;position:absolute;" %>
+  <h2 style="margin-top:20px;"><%= @work.name %></h2>
   
   <div class="ContentFlow" id="ContentFlow" style="margin-bottom:80px;">
     <div class="loadIndicator"><div class="indicator"></div></div>
@@ -16,6 +17,7 @@
     <%= link_to_function image_tag(picture.url(:thumb), :class => "thumb", :alt => ""), "myNewFlow.moveTo(#{i});"  %>
   <% end %>
   <%= @work.description %>
+  <%= link_to "<< powrót", :back, :class => "more right" %>
 </div>
 <script>
   var myNewFlow = new ContentFlow('ContentFlow', { reflectionHeight: 0.2, startItem: 0, onclickActiveItem: function(item){return false;} } );
