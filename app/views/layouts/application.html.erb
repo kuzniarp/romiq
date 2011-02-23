@@ -44,7 +44,25 @@
 	    <div class="menu-horizontal clearfix">
 	      <ul class="sf-menu">
 		<% for page in Page.menu_pages do %>
-		  <li><%= link_to page.name, link_to_page(page) %></li>
+		  <li><%= link_to page.name, link_to_page(page) %>
+        <% product_categories = ProductCategory.roots %>
+        <% if page.is_a?(ProductPage) && product_categories.present? %>
+          <ul>
+            <% product_categories.each do |cat| %>
+              <li><%= link_to cat.name, products_category_path(cat) %>
+                <% children = cat.children %>
+                <% if children.present? %>
+                  <ul>
+                    <% children.each do |child| %>
+                      <li><%= link_to child.name, products_category_path(child) %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </li>
 		<% end %>
 	    </div><!--//menu horizontal-->
 	  </div><!--//grid_12-->
