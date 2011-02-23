@@ -24,8 +24,8 @@
           <b><%= newest.name %></b>
           <%= strip_tags(newest.body.to_s) %><br />
         </span>
-        <%= link_to 'wiecej...', posts_path, :class => "more" %>
       </p>
+      <%= link_to 'wiecej...', posts_path, :class => "more right" %>
     <% end %>
   </div><!--//grid4-->
 
@@ -40,11 +40,11 @@
           <b><%= product.name %></b>
           <%= strip_tags(product.description.to_s) %><br />
         </span>
-        <%= link_to 'wiecej...', products_path, :class => "more" %>
       </p>
     </li>
     <% end %>
     </ul>
+    <%= link_to 'wiecej...', products_path, :class => "more right" %>
     <% end %>
   </div><!--//grid4-->
 
@@ -59,11 +59,11 @@
           <b><%= work.name %></b>
           <%= strip_tags(work.description.to_s) %><br />
         </span>
-        <%= link_to 'wiecej...', works_path, :class => "more" %>
       </p>
     </li>
     <% end %>
     </ul>
+    <%= link_to 'wiecej...', works_path, :class => "more right" %>
     <% end %>
   </div><!--//grid4-->
   
