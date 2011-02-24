@@ -1,0 +1,6 @@
+<% form_tag :controller => 'home', :action => 'login' do %>
+<%= text_field_tag :login %>
+<%= password_field_tag :password %>
+<%= submit_tag 'Zaloguj' %>
+<% end %>
+<%= flash[:notice] %>

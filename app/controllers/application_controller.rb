@@ -16,9 +16,14 @@ class ApplicationController < ActionController::Base
   private
   def authenticate
     if RAILS_ENV=="production"
-      authenticate_or_request_with_http_basic do |id, password| 
-        id == "romi" && password == "beta"
+      unless session[:authenticated]
+        redirect_to :controller => 'home', :action => 'login'
       end
     end
+#    if RAILS_ENV=="production"
+#      authenticate_or_request_with_http_basic do |id, password| 
+#        id == "romi" && password == "beta"
+#      end
+#    end
   end
 end
