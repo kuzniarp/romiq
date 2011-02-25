@@ -5,10 +5,10 @@
 <div class="grid_9" style="margin:0;">
   <% for work in @works do %>
     <h3><%= work.name %></h3>
-    <div class="grid_6" style="margin-left:0;">
+    <div class="grid_5" style="margin-left:0;">
       <%= image_tag(work.image.url(:content), :class => "shadow-large") if work.image %>
     </div>
-    <div class="grid_3" style="margin:0;height:245px;overflow:hidden;text-align:justify;">
+    <div class="grid_4" style="margin:0;height:180px;overflow:hidden;text-align:justify;">
       <%= strip_tags(work.description) %>
     </div>
     <%= link_to 'wiecej...', work_path(work), :class => "more right" %>

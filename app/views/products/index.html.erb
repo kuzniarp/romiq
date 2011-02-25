@@ -5,10 +5,10 @@
 <div class="grid_9" style="margin:0;">
   <% for product in @products do %>
     <h3><%= product.name %></h3>
-    <div class="grid_6" style="margin-left:0;">
+    <div class="grid_5" style="margin-left:0;">
       <%= image_tag(product.image.url(:content), :class => "shadow-large") if product.image %>
     </div>
-    <div class="grid_3" style="margin:0;height:245px;overflow:hidden;text-align:justify;">
+    <div class="grid_4" style="margin:0;height:180px;overflow:hidden;text-align:justify;">
       <%= strip_tags(product.description) %>
     </div>
     <%= link_to 'wiecej...', product_path(product), :class => "more right" %>

@@ -9,7 +9,7 @@
     <div class="loadIndicator"><div class="indicator"></div></div>
     <div class="flow" style="width:200%;margin:-8% 0 0 -50%;">
       <% @work.pictures.each do |picture| %>
-        <%= link_to image_tag(picture.url(:content), :class => "content", :alt => ""), picture.url(:original), :class => "item" %>
+        <%= link_to image_tag(picture.url(:flow), :class => "content", :alt => ""), picture.url(:original), :class => "item" %>
       <% end %>
     </div>
   </div>
