@@ -3,7 +3,7 @@
 
 <div class="grid_3 nested_lists" style="text-align:justify;">
   <h3>Kategorie</h3>
-  <%= category_list ProductCategory, false, @category %>
+  <%= category_list ProductCategory, false, @category, @product %>
 </div>
 <div class="grid_9" style="margin:0;">
   <h2><%= @product.name %></h2>
