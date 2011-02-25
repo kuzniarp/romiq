@@ -1,6 +1,6 @@
 <% photos ||= @product.pictures %>
-<div class="grid_12"style="margin:0 0 20px 0;padding:0;border-bottom:1px solid #ddd;">
-  <div class="grid_6" style="margin-left:0;">
+<div class="grid_9"style="margin:0 0 20px 0;padding:0;border-bottom:1px solid #ddd;">
+  <div class="grid_5" style="margin-left:0;">
     <% if photos.present? %>
       <%= image_tag(photos.first.url(:content), :class => "shadow-large", :style => "margin-bottom:20px;") %>
     <% else %>

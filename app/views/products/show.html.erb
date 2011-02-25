@@ -1,7 +1,11 @@
 <%= javascript_include_tag 'jquery.prettyPhoto' %>
 <%= stylesheet_link_tag 'prettyPhoto' %>
 
-<div class="grid_12" style="text-align:justify;">
+<div class="grid_3 nested_lists" style="text-align:justify;">
+  <h3>Kategorie</h3>
+  <%= category_list ProductCategory, false, @category %>
+</div>
+<div class="grid_9" style="margin:0;">
   <h2><%= @product.name %></h2>
   <div id="product_photos">
     <%= render :partial => 'photos' %>
