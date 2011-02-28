@@ -2,7 +2,7 @@
 <div class="grid_9"style="margin:0 0 20px 0;padding:0;border-bottom:1px solid #ddd;">
   <div class="grid_5" style="margin-left:0;">
     <% if photos.present? %>
-      <%= image_tag(photos.first.url(:content), :class => "shadow-large", :style => "margin-bottom:20px;") %>
+      <%= image_tag(photos.first.url(:content), :class => "shadow-large", :style => "margin-bottom:20px;", :id => 'main_image') %>
     <% else %>
       <p>Brak zdjec produktu spelniajacego podane kryteria.</p>
     <% end %>
@@ -49,12 +49,7 @@
 </div>
 <div>
   <% photos.each do |picture| %>
-    <%= link_to image_tag(picture.url(:thumb), :class => "shadow-large", :alt => "", :style => "margin-right:10px;"), picture.url(:original), :rel => "prettyPhoto[gallery]" %>
+    <%= image_tag(picture.url(:thumb), :class => "shadow-large", :alt => "", :style => "margin-right:10px;cursor:pointer;", :title => picture.url(:content), :onclick => "$('#main_image').hide();$('#main_image')[0].src = this.title;$('#main_image').fadeIn()") %>
   <% end %>
 </div>
 <hr />
-<script type="text/javascript" charset="utf-8">
-  $(document).ready(function(){
-  $("a[rel^='prettyPhoto']").prettyPhoto({theme:'dark_square'});
-  });
-</script>
