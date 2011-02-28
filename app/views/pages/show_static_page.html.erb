@@ -1,4 +1,16 @@
-<div class="grid_12">
+<div class="grid_3 nested_lists">
+  <% parent =  @page.root %>
+  <ul class="nested lists">
+    <li><%= link_to @page.root.name, page_path(@page.root) %>
+      <ul>
+        <% parent.children.active.each do |child| %>
+          <li><%= link_to child.name, page_path(child) %></li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div class="grid_9" style="margin:0;">
   <h2><%= @page.header %></h2>
   <%= @page.body %>
 </div>
