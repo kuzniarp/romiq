@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
 
   has_permalink :name, :unique => true, :to_param => :permalink
 
-  has_many :pictures, :as => :assetable, :dependent => :destroy
+  has_many :pictures, :as => :assetable, :dependent => :destroy, :order => :item_order
   has_many :category_items, :as => :item, :dependent => :destroy
   has_many :categories, :through => :category_items
 

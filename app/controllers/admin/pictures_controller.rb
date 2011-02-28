@@ -28,4 +28,10 @@ class Admin::PicturesController < ApplicationController
     @picture.destroy
     render :nothing => true
   end
+  
+  def order
+    order = params[:pictures_list]
+    Picture.order(order)
+    render :text => order.inspect
+  end
 end

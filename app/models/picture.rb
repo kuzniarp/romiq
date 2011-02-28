@@ -27,6 +27,9 @@ class Picture < Asset
   validates_attachment_content_type :data, :content_type => ['image/jpeg', 'image/pjpeg', 'image/jpg']
   
   # Fix the mime types. Make sure to require the mime-types gem
+
+  before_save :set_item_order
+
   def swfupload_file=(file_data)
     file_data.content_type = MIME::Types.type_for(file_data.original_filename).to_s
     self.data = file_data
@@ -46,4 +49,15 @@ class Picture < Asset
 	  options[:methods] << :url_thumb
 	  super options
   end
+  
+  def set_item_order
+    self.item_order = Asset.count(:conditions => ["assetable_type = ? and assetable_id = ?", assetable_type, assetable_id]) + 1
+  end
+
+  def self.order(ids)
+    update_all(
+               ['item_order = FIND_IN_SET(id, ?)', ids.join(',')],
+               { :id => ids }
+               )
+  end  
 end
