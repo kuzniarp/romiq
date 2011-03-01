@@ -10,3 +10,22 @@
   <div class="clear"></div>
   <%= @product.description %>
 </div>
+
+<% javascript_tag do %>
+  function initMenu() {
+    $('.root p').hide();
+    $('.root ul').hide();
+    $('.root li a.toggle').click(
+      function() {
+        $(this).siblings().not('a').slideToggle('fast');
+        this.toggleClassName('expanded');
+        return false;
+      }
+    );
+  }
+  $(document).ready(function() {
+    initMenu();
+    $('p.active').parents('li').each(function(){$(this).children('a').siblings().not('a').show();})
+    $('p.small.active').parents('li').children('a.toggle').each(function(){ this.toggleClassName('expanded');})
+  });
+<% end %>

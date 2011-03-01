@@ -4,7 +4,9 @@
 .nested_lists li {color:#CC5555;font-style:italic;} /* active */
 .nested_lists li a{text-decoration:none;font-style:normal;color:#666;}
 .nested_lists li a:hover{color:#999;}
-.nested_lists li p.small{font-size:11px;margin:0;padding:0;}
+.nested_lists li a.toggle{background:url('/images/toggle.png') no-repeat;display: block;float: left;height: 9px;margin: 6px 4px 0 0;width: 9px;}
+.nested_lists li a.expanded{background-position:0 -9px;}
+.nested_lists li p.small{font-size:11px;margin:0 0 0 23px;padding:0;line-height:150%;}
 .nested_lists li p.small a{color:#999;}
 .nested_lists li p.small a:hover{color:#666;}
 
