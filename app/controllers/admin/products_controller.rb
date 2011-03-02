@@ -16,6 +16,30 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def clone
+    origin = Product.find_by_id(params[:id])
+    @product = origin.clone
+    @product.name = origin.name + ' kopia'
+#     combinations = []
+#     origin.option_combinations.each do |orig_comb|
+#       pictures = []
+#       new_comb = orig_comb.clone
+#       new_comb.product_id = @product.id
+#       orig_comb.option_combination_pictures.each do |orig_pict|
+#         new_pict = orig_pict.clone
+#         new_pict.option_combination_id = new_comb.id
+#         pictures << new_pict
+#       end
+#       new_comb.option_combination_pictures = pictures
+#       combinations << new_comb
+#     end
+#     @product.option_combinations = combinations
+#    categories = origin.category_items.map{|c| c.clone}
+#    categories.each{|c| c.item_id = @product.id}
+    @product.categories = origin.categories.clone
+    render :action => 'new'
+  end
+
   def edit
     @product = Product.find_by_id(params[:id])
   end
