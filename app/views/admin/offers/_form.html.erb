@@ -1,0 +1,28 @@
+<% form_for([:admin, @offer]) do |f| %>
+  <%= f.error_messages %>
+  
+  <fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
+    
+    <p>
+      <label>Tytuł</label>
+      <%= f.text_field :name, :class => "text-input small-input" %>
+    </p>
+
+    <p>
+      <label>Opis</label>
+      <%= f.cktext_area :description, :toolbar=>'Full', :width=>'99%', :language => 'pl' %>
+    </p>
+        
+    <p>
+      <label>Status</label>
+      <%= f.check_box :status %> Aktywna?
+    </p>
+                
+    <p>
+      <input class="button" type="submit" value="Zapisz" />
+    </p>
+    
+  </fieldset>
+  
+  <div class="clear"></div><!-- End .clear -->
+<% end %>
