@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Admin::CategoriesController < ApplicationController
 
   layout "admin"
@@ -21,7 +22,7 @@ class Admin::CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         flash[:notice] = 'Strona została zapisana.'
-        format.html { redirect_to(category_class == ProductCategory ? admin_products_path : admin_works_path) }
+        format.html { redirect_to(admin_item_category_path(category_class)) }
       else
         format.html { render :action => "new" }
       end
@@ -34,7 +35,7 @@ class Admin::CategoriesController < ApplicationController
     respond_to do |format|
       if @category.update_attributes(params[:category])
         flash[:notice] = 'Kategoria została zaktualizowana'
-        format.html { redirect_to(@category.class == ProductCategory ? admin_products_path : admin_works_path) }
+        format.html { redirect_to(admin_item_category_path(@category.class))}
       else
         format.html { render :action => "edit" }
       end
@@ -54,5 +55,13 @@ class Admin::CategoriesController < ApplicationController
     order = params[:category]
     Category.order(order)
     render :text => order.inspect
+  end
+
+  def admin_item_category_path(model)
+    case model.to_s 
+    when 'ProductCategory' then admin_products_path
+    when 'WorkCategory' then admin_works_path
+    when 'FeatureCategory' then admin_products_path
+    end
   end
 end

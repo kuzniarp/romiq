@@ -47,6 +47,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :categories
     admin.resources :product_categories, :controller => "categories"
     admin.resources :work_categories, :controller => "categories"
+    admin.resources :feature_categories, :controller => "categories"
     admin.resources :pictures#, :only => [:create, :delete]
     admin.resources :features
     admin.resources :text_features, :controller => 'features'

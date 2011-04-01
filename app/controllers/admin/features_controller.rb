@@ -26,7 +26,7 @@ class Admin::FeaturesController < ApplicationController
   
   def update
     @feature = Feature.find_by_id(params[:id])    
-    @feature.name = params[:feature][:name]
+    @feature.attributes = params[:feature]
     @feature.type = params[:feature][:type]
     respond_to do |format|
       if @feature.save
@@ -46,4 +46,15 @@ class Admin::FeaturesController < ApplicationController
       format.html { redirect_to(admin_products_path) }
     end
   end  
+
+  def for_category
+    if params[:category_id].present?
+      feature = Feature.find_by_id(params[:feature_id])
+#      @product = Product.find_by_id(params[:product_id])
+      @options = feature.options
+      render :partial => '/admin/products/option_combination_form_options'
+    else
+      render :nothing => true
+    end
+  end
 end

@@ -39,17 +39,24 @@ module ApplicationHelper
   def subcategory_list root, admin, active, active_item
     list = ''
     root.children.each do |cat|
-      list += content_tag(:li, link_to('&nbsp;','#',:class=>'toggle'+(' active' if active == cat).to_s) + link_to_if(active != cat, cat.name, (admin ? edit_admin_category_path(cat) : items_category_path(cat)), :class => ('active' if active == cat)) + (link_to(" "+image_tag("icons/plus.png"), new_admin_category_path(:parent_id => cat.id, :type => cat.class), :title => "Dodaj podkategorie") if admin).to_s + content_tag(:p, cat.items.map{|item| link_to_if(active_item != item, item.name, product_path(item))}.join('<br />'), :class => "small"+(" active" if cat.items.include?(active_item)).to_s) + subcategory_list(cat, admin, active, active_item))
+      list += content_tag(:li, link_to('&nbsp;','#',:class=>'toggle'+(' active' if active == cat).to_s) + link_to_if(active != cat, cat.name, (admin ? edit_admin_category_path(cat) : items_category_path(cat)), :class => ('active' if active == cat)) + (link_to(" "+image_tag("icons/plus.png"), new_admin_category_path(:parent_id => cat.id, :type => cat.class), :title => "Dodaj podkategorie") if admin).to_s + content_tag(:p, cat.items.map{|item| link_to_if(active_item != item, item.name, item_path(item))}.join('<br />'), :class => "small"+(" active" if cat.items.include?(active_item)).to_s) + subcategory_list(cat, admin, active, active_item))
     end  
     #	  list += content_tag(:li, link_to("Nowa", new_admin_category_path)) if admin
     list.present? ? content_tag(:ul, list, :style => 'margin:0;') : ''
+  end
+
+  def items_category_name model
+    case model.to_s
+    when 'ProductCategory' then "product[category_ids][]"
+    when 'FeatureCategory' then "feature[category_ids][]"
+    end
   end
 
   def checkbox_category_list model, obj
     list = ''
     roots = model.roots
     roots.each do |root|
-      list += content_tag(:ul, content_tag(:li, check_box_tag("product[category_ids][]", root.id, obj.categories.include?(root)) + root.name + checkbox_subcategory_list(root, obj)))
+      list += content_tag(:ul, content_tag(:li, check_box_tag(items_category_name(model), root.id, obj.categories.include?(root)) + root.name + checkbox_subcategory_list(root, obj)))
     end
     list
   end
@@ -57,7 +64,7 @@ module ApplicationHelper
   def checkbox_subcategory_list root, obj
     list = ''
     root.children.each do |cat|
-      list += content_tag(:li, check_box_tag("product[category_ids][]", cat.id, obj.categories.include?(cat)) + cat.name + checkbox_subcategory_list(cat, obj))
+      list += content_tag(:li, check_box_tag(items_category_name(root.class), cat.id, obj.categories.include?(cat)) + cat.name + checkbox_subcategory_list(cat, obj))
     end  
     #	  list += content_tag(:li, link_to("Nowa", new_admin_category_path)) if admin
     list.present? ? content_tag(:ul, list, :style => 'margin:0;') : ''

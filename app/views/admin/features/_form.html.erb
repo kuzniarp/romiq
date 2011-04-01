@@ -13,6 +13,13 @@
       <%= f.select :type, [['Tekst','TextFeature'],['Kolor','ColorFeature']] %>
     </p>
 
+
+    <p class="nested_lists">
+      <%= f.label 'feature[category_ids][]', "Grupa" %>
+
+      <%= checkbox_category_list FeatureCategory, @feature %>
+    </p>
+
     <p>
       <input class="button" type="submit" value="Zapisz" />
     </p>
