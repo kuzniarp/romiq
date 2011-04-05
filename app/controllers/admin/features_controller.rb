@@ -49,10 +49,9 @@ class Admin::FeaturesController < ApplicationController
 
   def for_category
     if params[:category_id].present?
-      feature = Feature.find_by_id(params[:feature_id])
-#      @product = Product.find_by_id(params[:product_id])
-      @options = feature.options
-      render :partial => '/admin/products/option_combination_form_options'
+      category = FeatureCategory.find_by_id(params[:category_id])
+      @features = category.features
+      render :partial => '/admin/products/features_form', :locals => {:product_id => params[:product_id]}
     else
       render :nothing => true
     end

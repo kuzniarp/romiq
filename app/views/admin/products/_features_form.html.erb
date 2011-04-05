@@ -1,0 +1,2 @@
+Cecha:
+<%= select_tag :feature, options_for_select([['Wybierz',nil]]+@features.map{|p| [p.name, p.id]}), :onchange => remote_function(:update => 'option_combination_form_options', :url => for_feature_admin_options_path, :with => "'feature_id='+this.value + '&product_id=#{product_id}'") %>

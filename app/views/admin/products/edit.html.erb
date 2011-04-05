@@ -35,8 +35,7 @@
       <%= select_tag :group, options_for_select([['Wybierz',nil]]+FeatureCategory.all.map{|p| [p.name, p.id]}), :onchange => remote_function(:update => 'feature_select', :url => for_category_admin_features_path, :with => "'category_id='+this.value + '&product_id=#{@product.id}'") %>
       </p>
       <p id="feature_select">
-        Cecha:
-      <%= select_tag :feature, options_for_select([['Wybierz',nil]]+Feature.all.map{|p| [p.name, p.id]}), :onchange => remote_function(:update => 'option_combination_form_options', :url => for_feature_admin_options_path, :with => "'feature_id='+this.value + '&product_id=#{@product.id}'") %>
+        <%= render :partial => 'features_form', :locals => {:product_id => @product.id} %>
       </p>
       <div id="option_combination_form_options"></div>
       <div id="option_combination_form">

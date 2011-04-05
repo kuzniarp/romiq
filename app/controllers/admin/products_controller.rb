@@ -42,6 +42,7 @@ class Admin::ProductsController < ApplicationController
 
   def edit
     @product = Product.find_by_id(params[:id])
+    @features = Feature.all
   end
 
   def create
