@@ -1,5 +1,5 @@
 class Mailer < ActionMailer::Base  
-  def mail subject, email, message, sent_at = Time.now
+  def mail subject, email, message, branch, sent_at = Time.now
     @subject    = subject
     @body       = {:message => message}
     @recipients = "kuzniarp@gmail.com"

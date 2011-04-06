@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   end
 
   def sendmail
-    if Mailer.deliver_mail params[:subject], params[:email], params[:message]
+    if Mailer.deliver_mail params[:subject], params[:email], params[:message], params[:branch]
       render :text => "Wiadomość została wysłana."
     else
       render :text => "Wystąpił problem z wysłaniem wiadomości. Spróbuj ponownie później."
