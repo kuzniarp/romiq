@@ -1,0 +1,55 @@
+<% photos ||= @product.pictures %>
+<div class="grid_9"style="margin:0 0 20px 0;padding:0;border-bottom:1px solid #ddd;">
+  <div class="grid_5" style="margin-left:0;">
+    <% if photos.present? %>
+      <%= image_tag(photos.first.url(:content), :class => "shadow-large", :style => "margin-bottom:20px;", :id => 'main_image') %>
+    <% else %>
+      <p>Brak zdjec produktu spelniajacego podane kryteria.</p>
+    <% end %>
+  </div>
+  
+  <div class="grid_3">
+    <% form_remote_tag :url => {:controller => 'products', :action => 'pictures_for_options', :product_id => @product.id}, :update => "product_photos" do |f| %>
+      <ul style="list-style:none;">
+        <% option_combinations = @product.option_combinations %> 
+        <% option_combinations.map{|oc| oc.features}.flatten.uniq.each do |feature| %>
+          <li>
+            <span><%= feature.name %></span><br />
+            <% option_ids = params[:options].to_a.reject{|o| o.blank?}.map{|o| o.to_i} %>
+            <% options = option_combinations.map{|oc| oc.options.for_feature(feature)}.flatten.uniq %>
+            <% if feature.is_a? ColorFeature %> 
+              <span class="color_option_wrapper">
+                <label for="color_0"><span class="color_option_label" style="height:36px;width:36px;border:1px solid #999;">Bez znaczenia</span></label>
+                <%= radio_button_tag "options[]", "", !option_ids.any?{|oid| options.map(&:id).include?(oid)}, {:id => "color_0", :onclick => "this.form.submit.click();"} %>
+              </span>
+              <% options.each do |option| %>
+                <span class="color_option_wrapper">
+                  <label for="<%= "color_#{option.id}" %>">
+                    <% if option.texture.present? %>
+                      <span style="display:block;"><%= image_tag option.texture.url(:thumb) %></span>
+                    <% elsif option.color_code.present? %>
+                      <span class="color_option_label" style="background:#<%= option.color_code %>;">&nbsp;</span>
+                    <% else %>
+                      <span class="color_option_label" style="height:36px;width:36px;border:1px solid #999;"><%= option.name %></span>
+                    <% end %>
+                  </label>
+                  <%= radio_button_tag "options[]", option.id, option_ids.include?(option.id), {:id => "color_#{option.id}", :onclick => "this.form.submit.click();"} %>
+                </span>
+              <% end %>
+              <span class="clear"></span>              
+            <% else %>
+              <%= select_tag "options[]", options_for_select([["Bez znaczenia",nil]]+options.map{|o| [o.name, o.id]}, (option_ids & options.map{|o| o.id})), :onchange => "this.form.submit.click();" %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <%= submit_tag 'Odswiez', :name => 'submit', :style => "display:none;" %>
+    <% end %>
+  </div>
+</div>
+<div>
+  <% photos.each do |picture| %>
+    <%= image_tag(picture.url(:thumb), :class => "shadow-large", :alt => "", :style => "margin-right:10px;cursor:pointer;", :title => picture.url(:content), :onclick => "$('#main_image').hide();$('#main_image')[0].src = this.title;$('#main_image').fadeIn()") %>
+  <% end %>
+</div>
+<hr />

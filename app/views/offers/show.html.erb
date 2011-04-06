@@ -1,0 +1,17 @@
+<div class="grid_3 nested_lists" style="text-align:justify;">
+  <h3>Aktualne promocje</h3>
+  <% Offer.active.each do |offer| %>
+    <%= link_to offer.name, offer_path(offer) %>
+  <% end %>
+</div>
+<div class="grid_9" style="margin:0;">
+  <h2><%= @offer.name %></h2>  
+  <%= @offer.description %>
+  <h5>Produkty w promocji</h5>
+  <% @offer.all_products.each do |product| %>
+    <div style="float:left;width:100px;margin:5px;">
+      <%= link_to(image_tag(product.image.url(:thumb)), product_path(product)) if product.image %><br />
+      <%= link_to product.name, product_path(product) %>
+    </div>
+  <% end %>
+</div>

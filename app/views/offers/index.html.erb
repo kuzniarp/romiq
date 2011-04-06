@@ -1,0 +1,20 @@
+<div class="grid_3 nested_lists">
+  <h3>Aktualne promocje</h3>
+  <% Offer.active.each do |offer| %>
+    <%= link_to offer.name, offer_path(offer) %>
+  <% end %>
+</div>
+<div class="grid_9" style="margin:0;">
+  <% for offer in @offers do %>
+    <h3><%= offer.name %></h3>
+    <div class="grid_5" style="margin-left:0;">
+      <% # image_tag(offer.image.url(:content), :class => "shadow-large") if offer.image %>
+    </div>
+    <div class="grid_4" style="margin:0;height:180px;overflow:hidden;text-align:justify;">
+      <%= strip_tags(offer.description) %>
+    </div>
+    <%= link_to 'wiecej...', offer_path(offer), :class => "more right" %>
+    <div class="clear"></div>
+    <hr />
+  <% end %>
+</div>

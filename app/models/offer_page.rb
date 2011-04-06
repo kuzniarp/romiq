@@ -1,0 +1,2 @@
+class OfferPage < Page
+end

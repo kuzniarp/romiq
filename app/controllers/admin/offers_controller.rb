@@ -34,7 +34,9 @@ class Admin::OffersController < ApplicationController
 
   def update
     @offer = Offer.find_by_id(params[:id])
-    
+    params[:offer] ||= {}
+    params[:offer][:product_ids] ||= []
+    params[:offer][:category_ids] ||= []
     respond_to do |format|
       if @offer.update_attributes(params[:offer])
         flash[:notice] = 'Promocja zostałs zaktualizowana.'

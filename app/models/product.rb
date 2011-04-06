@@ -16,10 +16,10 @@ class Product < ActiveRecord::Base
   named_scope :active, :conditions => {:status => true}
 
   def self.newest limit=1
-      active.find(:all, :limit => limit, :order => "created_at desc")
+    active.find(:all, :limit => limit, :order => "created_at desc")
   end
-
+  
   def image
-      pictures.first
+    pictures.first
   end
 end

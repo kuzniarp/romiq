@@ -21,6 +21,7 @@ module ApplicationHelper
       when 'HomePage' then root_path 
       when 'ProductPage' then products_path
       when 'WorkPage' then works_path
+      when 'OfferPage' then offers_path
       else page_path(page)
       end
     end    
