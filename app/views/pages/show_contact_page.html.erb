@@ -1,74 +1,47 @@
 <div class="grid_8">
-
   <h2><%= h @page.header %></h2>
-
-  <%= @page.body %>
-  
+  <%= @page.body %>  
   <!--
-
   <p class="message warning">Please fill out all fields and hit submit.</p>
   <p class="message success">Ok</p>
   -->
-
-
   <h3>Wyślij nam wiadomość</h3>
-
   <% form_remote_tag :url => {:action => "sendmail"}, :update => "notice", :html => {:class => "standardForm"} do %>
-
     <div class="field">
-
+      <label for="branch">Dzial</label>
+      <select name="branch">
+        <option value="biuro">Briuro</option>
+        <option value="sklep">Sklep</option> 
+      </select>
+    </div>
+    <div class="field">
       <label for="email">Twój email</label>
-
       <input type="text" name="email" id="email" class="textbox shadow" />
-
     </div>
-
     <div class="field">
-
       <label for="subject">Temat</label>
-
       <input type="text" name="subject" id="subject" class="textbox shadow" />
-
     </div>
-
-
     <div class="field">
-
       <label for="message">Wiadomość</label>
-
       <textarea name="message" id="message" class="textarea shadow"></textarea>
-
     </div>
-
     <div class="field hidden">
-
       <input type="text" name="e_mail" id="e_mail" class="textbox shadow" />
-
     </div>
-
     <div class="field">
-
-      <input type="submit" name="submit" id="submit" value="Wyślij" class="button shadow hovershadow" />
-      
+      <input type="submit" name="submit" id="submit" value="Wyślij" class="button shadow hovershadow" />     
       <div id="notice" style="color:#44AA44"></div>
-
     </div>
-  
   <% end %>
-
 </div><!--//grid_12-->
 
 <div class="grid_4">
-
   <h3>Jak do nas trafić</h3>
-
   <%= @map.to_html %>
   <div style="width: 300px; height: 350px;">
     <%= @map.div %>
-  </div>
-  
+  </div>  
   <hr />
-
   <p><p>
-
 </div><!--//grid_2-->
