@@ -1,12 +1,12 @@
-<div class="grid_8">
-  <h2><%= @post.name %></h2>
-  <%= @post.body %>
-</div>
 <div class="grid_4">
-  <h3>Ostatnie wpisy</h3>
+  <h3><%= link_to "Ostatnie wpisy", posts_path %></h3>
   <ul>
     <% for recent in @recent do %>
     <li><%= link_to(recent.name, post_path(recent)) + ' ' + recent.created_at.to_s(:short) %></li>
    <% end %>
   </ul>
+</div>
+<div class="grid_8">
+  <h2><%= @post.name %></h2>
+  <%= @post.body %>
 </div>

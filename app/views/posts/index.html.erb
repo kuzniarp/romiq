@@ -1,9 +1,35 @@
-<div class="grid_12">
-  <% for post in @posts do %>
-    <div>
-      <h3><%= post.name %></h3>
-      <%= post.body %>
-    </div>
-    <hr />
+<div class="grid_4">
+  <h3><%= link_to "Ostatnie wpisy", posts_path %></h3>
+  <ul>
+    <% for recent in @recent do %>
+    <li><%= link_to(recent.name, post_path(recent)) + ' ' + recent.created_at.to_s(:short) %></li>
    <% end %>
+  </ul>
+
+<% if false %>
+  <ul>
+  <% Post.months.each do |year, months| %>    
+    <li>
+      <%= year %>
+      <ul>
+      <% months.each do |month| %>
+        <li><%= link_to month, "#" %></li>
+      <% end %>
+      </ul>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+</div>
+
+<div class="grid_8">
+  <% for post in @posts do %>
+    <h3><%= post.name %></h3>
+    <div style="margin:0;height:180px;overflow:hidden;text-align:justify;">
+      <%= strip_tags(post.body) %>
+    </div>
+    <%= link_to 'wiecej...', post_path(post), :class => "more right" %>
+    <div class="clear"></div>
+    <hr />
+  <% end %>
 </div>
