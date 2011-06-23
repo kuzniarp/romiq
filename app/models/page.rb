@@ -11,16 +11,22 @@ class Page < ActiveRecord::Base
 
   before_save :update_header
 
+  attr_accessor :order_number
+
   def to_param
     permalink
   end
 
+  def order_number
+    @order_number ||= item_order
+  end
+
   def self.menu_pages
     pages = active.all(:conditions => {:parent_id => nil})
-    pages << ProductPage.new(:name => "Produkty", :permalink => "produkty", :item_order => 1.1)
-    pages << WorkPage.new(:name => "Galeria", :permalink => "galeria", :item_order => 1.2)
-    pages << OfferPage.new(:name => "Promocje", :permalink => "promocje", :item_order => 1.3)
-    pages.sort_by(&:item_order)
+    pages << ProductPage.new(:name => "Produkty", :permalink => "produkty", :order_number => 1.1)
+    pages << WorkPage.new(:name => "Galeria", :permalink => "galeria", :order_number => 1.2)
+    pages << OfferPage.new(:name => "Promocje", :permalink => "promocje", :order_number => 1.3)
+    pages.sort_by(&:order_number)
   end
   
   def self.top_level_pages
