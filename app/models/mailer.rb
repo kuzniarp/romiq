@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class Mailer < ActionMailer::Base  
-  RECIPIENTS = {"Administracja" => "biuro@romiq.pl", "Fronty Meblowe" => "krzysztof@romiq.pl", "Obsługa Klienta Indywidualnego" => "mirek@romiq.pl", "Obsługa Firm" => "mirek@romiq.pl"}
+  RECIPIENTS = {"1" => "biuro@romiq.pl", "2" => "krzysztof@romiq.pl", "3" => "mirek@romiq.pl", "4" => "mirek@romiq.pl"}
 
   def mail subject, email, message, branch, sent_at = Time.now
     @subject    = subject
