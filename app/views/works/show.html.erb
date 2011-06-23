@@ -16,7 +16,9 @@
   <% @work.pictures.each_with_index do |picture,i| %>
     <%= link_to_function image_tag(picture.url(:thumb), :class => "thumb", :alt => ""), "myNewFlow.moveTo(#{i});"  %>
   <% end %>
-  <%= @work.description %>
+  <div id="main_description">
+    <%= @work.description %>
+  </div>
   <%= link_to "<< powrót", :back, :class => "more right" %>
 </div>
 <script>

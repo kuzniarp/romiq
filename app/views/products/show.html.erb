@@ -8,7 +8,9 @@
     <%= render :partial => 'photos' %>
   </div>
   <div class="clear"></div>
-  <%= @product.description %>
+  <div id="main_description">
+    <%= @product.description %>
+  </div>
 </div>
 
 <% javascript_tag do %>
