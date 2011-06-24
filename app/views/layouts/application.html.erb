@@ -44,7 +44,7 @@
 	    <div class="menu-horizontal clearfix">
 	      <ul class="sf-menu">
 		<% for page in Page.menu_pages do %>
-		  <li><%= link_to (page.name == 'Promocje' ? content_tag(:span, page.name, :class => "more") : page.name), link_to_page(page) %>
+		  <li><%= link_to (page.name == 'Promocje' ? content_tag(:span, page.name, :class => "more") : page.name), link_to_page(page), :class => is_active?(controller, page) %>
         <% product_categories = ProductCategory.roots %>
         <% if page.is_a?(ProductPage) && product_categories.present? %>
           <ul>

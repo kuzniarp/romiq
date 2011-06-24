@@ -49,3 +49,5 @@ padding:0;margin:0;
 #main_description p {margin:0;padding:0;}
 #main_description ul li {margin:0;padding:0;}
 #main_description hr {margin:14px 0;}
+
+.sf-menu a.active {background:#fbfbfb;color:#555;font-weight:bold;}

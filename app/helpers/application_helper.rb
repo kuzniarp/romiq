@@ -71,4 +71,17 @@ module ApplicationHelper
     list.present? ? content_tag(:ul, list, :style => 'margin:0;') : ''
   end
 
+  def is_active? controller, page
+    if controller.controller_name == 'pages' && page.is_a?(HomePage)
+      return 'active'
+    elsif controller.controller_name == 'products' && page.is_a?(ProductPage)
+      return 'active'
+    elsif controller.controller_name == 'works' && page.is_a?(WorkPage)
+      return 'active'
+    elsif controller.controller_name == 'offers' && page.is_a?(OfferPage)
+      return 'active'
+    elsif page.permalink == params[:id] || page.children.any?{|c| c.permalink == params[:id]}
+      return 'active'
+    end
+  end
 end
