@@ -47,5 +47,14 @@ $(function(){
 		startIndex -= 1;
 	});
 	
+$(".nested_lists a[class!='toggle']").hover(
+	function () {
+		$(this).stop().animate({ marginLeft: "7px" }, 200);
+	}, 
+	function () {
+		$(this).stop().animate({ marginLeft: "0" });
+	}
+);
+
 
 });// end jquery
