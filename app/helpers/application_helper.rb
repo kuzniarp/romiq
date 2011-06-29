@@ -72,7 +72,7 @@ module ApplicationHelper
   end
 
   def is_active? controller, page
-    if controller.controller_name == 'pages' && page.is_a?(HomePage)
+    if controller.controller_name == 'pages' && params[:id].nil? && page.is_a?(HomePage)
       return 'active'
     elsif controller.controller_name == 'products' && page.is_a?(ProductPage)
       return 'active'
