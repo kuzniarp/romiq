@@ -43,7 +43,7 @@ module ApplicationHelper
       list += content_tag(:li, link_to('&nbsp;','#',:class=>'toggle'+(' active' if active == cat).to_s) + link_to_if(active != cat, cat.name, (admin ? edit_admin_category_path(cat) : items_category_path(cat)), :class => ('active' if active == cat)) + (link_to(" "+image_tag("icons/plus.png"), new_admin_category_path(:parent_id => cat.id, :type => cat.class), :title => "Dodaj podkategorie") if admin).to_s + content_tag(:p, cat.items.map{|item| link_to_if(active_item != item, item.name, item_path(item))}.join('<br />'), :class => "small"+(" active" if cat.items.include?(active_item)).to_s) + subcategory_list(cat, admin, active, active_item))
     end  
     #	  list += content_tag(:li, link_to("Nowa", new_admin_category_path)) if admin
-    list.present? ? content_tag(:ul, list, :style => 'margin:0;') : ''
+    list.present? ? content_tag(:ul, list) : ''
   end
 
   def items_category_name model
