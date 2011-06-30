@@ -75,6 +75,14 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
+	  // Fix applied so menu appears OVER cycled images
+	  // Reverses the default z-index stacking order of the elements
+	  var startIndex = 1099;
+	  $('div').each(function() {
+		  $(this).css('zIndex', startIndex);
+		  startIndex -= 1;
+	  });
+
     $('#products_carousel').bxSlider({auto:true,controls:false,pause:5000});
     $('#works_carousel').bxSlider({auto:true,controls:false,pause:5000,autoDelay:2500});
     <%= remote_function :url => {:controller => 'pages', :action => 'switch_promos'}, :update => 'promo_photos', :loading => "$('#promo_photos').append('#{image_tag('spinner.gif')}')" %>

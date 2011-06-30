@@ -9,7 +9,7 @@
     <div class="loadIndicator"><div class="indicator"></div></div>
     <div class="flow" style="width:200%;margin:-8% 0 0 -50%;">
       <% @work.pictures.each do |picture| %>
-        <%= link_to image_tag(picture.url(:flow), :class => "content", :alt => ""), picture.url(:original), :class => "item" %>
+        <%= link_to image_tag(picture.url(:flow), :class => "content", :alt => ""), picture.url(:original), :class => "item", :rel => "gellery_group" %>
       <% end %>
     </div>
   </div>
@@ -23,5 +23,5 @@
 </div>
 <script>
   var myNewFlow = new ContentFlow('ContentFlow', { reflectionHeight: 0.2, startItem: 0, onclickActiveItem: function(item){return false;} } );
-  $("a.item").fancybox({transitionIn: 'elastic', transitionOut: 'elastic', overlayShow: true, padding: 0, margin: 0, hideOnContentClick:true, showCloseButton:false, onStart: function(item){if(!$(item).hasClass('active')){ return false;}}});
+  $("a[rel='gellery_group']").fancybox({transitionIn: 'elastic', transitionOut: 'elastic', overlayShow: true, padding: 0, margin: 0, hideOnContentClick:true, showCloseButton:false, onStart: function(item){if(!$(item).hasClass('active')){ return false;}}});
 </script>

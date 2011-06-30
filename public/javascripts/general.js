@@ -38,15 +38,7 @@ $(function(){
 	
 	
 	$("p.message").click(function(){ $(this).slideUp(500); });
-		
-	// Fix applied so menu appears OVER cycled images
-	// Reverses the default z-index stacking order of the elements
-//	var startIndex = 1099;
-//	$('div').each(function() {
-//		$(this).css('zIndex', startIndex);
-//		startIndex -= 1;
-//	});
-	
+			
 $(".nested_lists a:not([class~='toggle'])").hover(
 	function () {
 		$(this).stop().animate({ marginLeft: "5px" }, 200);
