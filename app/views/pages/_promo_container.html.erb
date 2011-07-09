@@ -8,6 +8,19 @@
     </div>
     <script type="text/javascript">
     	// Promo slider setup, inserted on when promo is in use to save bandwidth
-	    $('#promos').bxSlider({auto:true,controls:false,pause:3000,mode:'fade',speed:1000,pager:true,pagerSelector:'#promo-nav-inner',pagerActiveClass:'activeSlide',autoHover:true,stopAuto:false});
+	    slider = $('#promos').bxSlider({auto:true,controls:false,pause:3000,mode:'fade',speed:1000,pager:true,pagerSelector:'#promo-nav-inner',pagerActiveClass:'activeSlide',autoHover:true,stopAuto:false,onAfterSlide:function(currentSlide, totalSlides){if(currentSlide+1 == totalSlides){load_next_promos(<%= @page.id %>);}}});
       $('#promos').parent().css("height", 400);
+
+      function load_next_promos(page_id){
+        slider.stopShow();
+        setTimeout(function(){
+          var link = $('#promo_link_'+page_id).next().children()[0];
+          if(link != undefined){
+            $(link).click();
+          } else {
+            link = $('#promo_tabs a')[0];
+            $(link).click();
+          }
+        },2000);
+      }
     </script>

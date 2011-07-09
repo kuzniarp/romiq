@@ -5,8 +5,8 @@
     <tr>
     <% promo_pages = Page.home_page.children.active.with_pictures %>    
     <% promo_pages.each do |page| %>
-      <td>
-        <%= link_to_remote page.name, {:url => {:controller => 'pages', :action => 'switch_promos', :page_id => page.id}, :update => 'promo_photos', :before => "$('#promos').bxSlider('stopShow');$('#promo_tabs').show();"}, {:title => strip_tags(page.body.to_s).gsub(/\r|\t|\n/,'')} %>
+      <td id="promo_link_<%= page.id %>">
+        <%= link_to_remote page.name, {:url => {:controller => 'pages', :action => 'switch_promos', :page_id => page.id}, :update => 'promo_photos', :before => "slider.stopShow();$('#promo_tabs').show();$('#promo_photos').fadeOut('slow');", :complete => "$('#promo_photos').hide();$('#promo_photos').fadeIn('slow');"}, {:title => strip_tags(page.body.to_s).gsub(/\r|\t|\n/,'')} %>
       </td>
     <% end %>
     </tr>
@@ -85,7 +85,7 @@
 
     $('#products_carousel').bxSlider({auto:true,controls:false,pause:5000});
     $('#works_carousel').bxSlider({auto:true,controls:false,pause:5000,autoDelay:2500});
-    <%= remote_function :url => {:controller => 'pages', :action => 'switch_promos'}, :update => 'promo_photos', :loading => "$('#promo_photos').append('#{image_tag('spinner.gif')}')" %>
+    <%= remote_function :url => {:controller => 'pages', :action => 'switch_promos'}, :update => 'promo_photos', :loading => "$('#promo_photos').append('#{image_tag('spinner.gif')}')", :complete => "$('#promo_photos').hide();$('#promo_photos').fadeIn('slow');" %>
     $('#promo_container').bind('mouseenter', function() { $('#promo_tabs_wrapper').slideDown(); });
     $('#promo_container').bind('mouseleave', function() { $('#promo_tabs_wrapper').slideUp(); });
   });
