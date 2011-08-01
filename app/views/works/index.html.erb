@@ -15,6 +15,7 @@
     <div class="clear"></div>
     <hr />
   <% end %>
+  <%= will_paginate @products, :previous_label => "Poprzednia", :next_label => "Następna", :separator => " | ", :style => "text-align:center;" %>
 </div>
 
 <% javascript_tag do %>

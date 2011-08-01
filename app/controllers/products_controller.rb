@@ -2,9 +2,9 @@ class ProductsController < ApplicationController
   def index
     if params[:category_id]      	  
       @category = ProductCategory.find_by_permalink(params[:category_id])
-      @products = @category ? @category.products : [] #all_children.map{|c| c.products}.flatten
+      @products = @category ? Product.for_categories(@category.all_children).paginate(:page => params[:page]) : []
 	  else
-      @products = Product.all(:order => "created_at desc", :limit => 5)
+      @products = Product.paginate(:page => params[:page], :order => "created_at desc")
 	  end
   end
   

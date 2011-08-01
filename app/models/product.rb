@@ -10,10 +10,14 @@ class Product < ActiveRecord::Base
   has_many :category_items, :as => :item, :dependent => :destroy
   has_many :categories, :through => :category_items
 
-#  has_many :product_options, :dependent => :destroy
   has_many :option_combinations, :dependent => :destroy
 
   named_scope :active, :conditions => {:status => true}
+
+  named_scope :for_categories, lambda {|categories| {:conditions => ["categories.id in (?)", categories.map(&:id)], :include => :categories}}
+
+  cattr_reader :per_page
+  @@per_page = 10
 
   def self.newest limit=1
     active.find(:all, :limit => limit, :order => "created_at desc")

@@ -2,9 +2,9 @@ class WorksController < ApplicationController
   def index
     if params[:category_id]      	  
       @category = WorkCategory.find_by_permalink(params[:category_id])
-      @works = @category ? @category.all_children.map{|c| c.works}.flatten : []
+      @works = @category ? Work.for_categories(@category.all_children).paginate(:page => params[:page]) : []
 	  else
-      @works = Work.all(:order => "created_at desc", :limit => 5)
+      @works = Work.paginate(:page => params[:page], :order => "created_at desc")
 	  end
   end
   

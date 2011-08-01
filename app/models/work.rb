@@ -6,6 +6,11 @@ class Work < ActiveRecord::Base
 
   named_scope :active, :conditions => {:status => true}
 
+  named_scope :for_categories, lambda {|categories| {:conditions => ["categories.id in (?)", categories.map(&:id)], :include => :categories}}
+  
+  cattr_reader :per_page
+  @@per_page = 10
+  
   def image
       pictures.first
   end
