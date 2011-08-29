@@ -4,9 +4,9 @@
 </div>
 <div class="grid_9" style="margin:0;">
   <% for work in @works do %>
-    <h3><%= work.name %></h3>
+    <h3><%= link_to work.name, work_path(work) %></h3>
     <div class="grid_5" style="margin-left:0;">
-      <%= image_tag(work.image.url(:content), :class => "shadow-large") if work.image %>
+      <%= link_to(image_tag(work.image.url(:content), :class => "shadow-large"), work_path(work)) if work.image %>
     </div>
     <div class="grid_4" style="margin:0;height:180px;overflow:hidden;text-align:justify;">
       <%= strip_tags(work.description) %>
