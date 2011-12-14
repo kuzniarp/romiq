@@ -1,7 +1,7 @@
 class Page < ActiveRecord::Base
 
   has_permalink :name
-  has_many :pictures, :as => :assetable
+  has_many :pictures, :as => :assetable, :dependent => :destroy, :order => :item_order
   
   acts_as_tree :order => "pages.item_order"
 
