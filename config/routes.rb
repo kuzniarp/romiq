@@ -58,7 +58,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :offers
   end
     
-  map.work '/galeria/:id', :controller => 'works', :action => 'show', :requirements => {:id => /\d/}
+  map.work '/galeria/:id', :controller => 'works', :action => 'show', :requirements => {:id => /\d+/}
   map.works '/galeria', :controller => 'works', :action => 'index'
   map.works_category '/galeria/:category_id', :controller => 'works', :action => 'index'
   map.product '/produkty/:id', :controller => 'products', :action => 'show', :requirements => {:id => /\d+/}
