@@ -50,3 +50,22 @@ class Page < ActiveRecord::Base
     self.header = self.name if self.header.blank?
   end
 end
+
+module PermalinkFu
+  class << self
+    # This method does the actual permalink escaping.
+    def escape(string)
+      string = string.to_s.unpack("U*").map{|e| e == 322 ? 108 : e}.pack("U*") #l > l
+      result = ActiveSupport::Multibyte::Chars.new(string.to_s).normalize(:kd).gsub(/[^\x00-\x7F]/,'').to_s
+      #result = ((translation_to && translation_from) ? Iconv.iconv(translation_to, translation_from, string) : string).to_s
+      #result.gsub!(/[^\x00-\x7F]+/, '') # Remove anything non-ASCII entirely (e.g. diacritics).
+      result.gsub!(/[^\w_ \-]+/i,   '') # Remove unwanted chars.
+      result.gsub!(/[ \-]+/i,      '-') # No more than one of the separator in a row.
+      result.gsub!(/^\-|\-$/i,      '') # Remove leading/trailing separator.
+      result.downcase!
+      result.size.zero? ? random_permalink(string) : result
+    rescue
+      random_permalink(string)
+    end
+  end
+end
