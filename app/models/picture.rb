@@ -20,7 +20,16 @@ class Picture < Asset
   has_attached_file :data,
                     :url  => "/assets/pictures/:id/:style_:basename.:extension",
                     :path => ":rails_root/public/assets/pictures/:id/:style_:basename.:extension",
-	                  :styles => { :flow => '520x292#', :content => '356x200#', :thumb => '100x100#' }
+                    :processors => [:watermark],
+	                  :styles => { 
+                                 :flow => '520x292#',
+                                 :gallery => {
+                                           :geometry => '1000x1000>',
+                                           :watermark_path => "#{RAILS_ROOT}/public/images/romiq_watermark.png",
+                                           :watermark_path_2 => "#{RAILS_ROOT}/public/images/archon_watermark.png",
+                                           :dissolve => '35%'},
+                                 :content => '356x200#',
+                                 :thumb => '100x100#' }
 	
 	validates_attachment_size :data, :less_than=>2.megabytes
   validates_attachment_presence :data
