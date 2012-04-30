@@ -4,9 +4,10 @@ class Admin::PicturesController < ApplicationController
     
   def create
     if params[:Filedata]
-      @picture = Picture.new(:swfupload_file => params[:Filedata])
+      @picture = Picture.new      
       @picture.assetable_id = params[:assetable_id]
       @picture.assetable_type = params[:assetable_type]
+      @picture.swfupload_file = params[:Filedata]
       if @picture.save
         render :partial => 'shared/picture', :object => @picture
       else

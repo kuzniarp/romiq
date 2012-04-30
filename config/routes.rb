@@ -41,9 +41,9 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :static_pages, :controller => "pages"
     admin.resources :contact_pages, :controller => "pages"
     admin.resources :portfolios, :controller => "pages"
-    admin.resources :works
+    admin.resources :works, :member => {:update_pictures => :post}
     admin.resources :posts
-    admin.resources :products, :member => {:clone => :get}
+    admin.resources :products, :member => {:clone => :get, :update_pictures => :post}
     admin.resources :categories
     admin.resources :product_categories, :controller => "categories"
     admin.resources :work_categories, :controller => "categories"

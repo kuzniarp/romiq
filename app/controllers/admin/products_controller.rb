@@ -65,8 +65,27 @@ class Admin::ProductsController < ApplicationController
       if @product.update_attributes(params[:product])
         flash[:notice] = 'Produkt został zaktualizowany.'
         format.html { redirect_to(admin_products_path) }
+        format.js { render :text => '', :status => :ok }
       else
         format.html { render :action => "edit" }
+        format.js { render :text => '', :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_pictures
+    success = false
+    @product = Product.find_by_id(params[:id])
+    begin
+      @product.pictures.each{|picture| picture.data.reprocess!}    
+      success = true
+    rescue
+    end
+    respond_to do |format|
+      if success
+        format.js { render :text => '', :status => :ok }
+      else
+        format.js { render :text => '', :status => :unprocessable_entity }
       end
     end
   end

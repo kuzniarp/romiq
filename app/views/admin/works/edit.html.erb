@@ -16,7 +16,14 @@
       <%= link_to 'Wróć', admin_works_path %>
     </div>
     <div class="tab-content" id="tab2">      
-      
+      <% remote_form_for [:admin, @work], :success => "alert('Konfiguracja znakow wodnych aktywna dla nowo uploadowanych zdjec.');", :failure => "alert('Wystapil problem')" do |f| %>
+        Znaki wodne: <br />
+        Romiq: <%= f.check_box :watermark %><br />
+        Archon: <%= f.check_box :watermark_2 %><br />
+        <%= f.submit 'Zapisz' %>
+      <% end %>
+      <%= link_to_remote 'Zastosuj aktualna konfiguracje znakow wodnych do wszystkich zuploadowanych zdjec', :url => update_pictures_admin_work_path(@work), :success => "alert('Zdjecia zaktualizowane')", :failure => "alert('Wystapil problem.')", :loading => "$('#pictures_update_spinner').toggle();", :complete => "$('#pictures_update_spinner').toggle();" %>
+      <%= image_tag 'spinner.gif', :style => "display:none;", :id => "pictures_update_spinner" %>
       <ul id="pictures_list">
         <%= render :partial => 'shared/picture', :collection => @work.pictures %>
       </ul>

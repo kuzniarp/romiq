@@ -3,7 +3,7 @@
   <div class="grid_5" style="margin-left:0;">
     <% if photos.present? %>
       <% main = photos.shift %>
-      <%= link_to image_tag(main.url(:content), :class => "shadow-large", :style => "margin-bottom:20px;", :id => 'main_image'), main.url(:original), :rel => "gallery_group" %>
+      <%= link_to image_tag(main.url(:content), :class => "shadow-large", :style => "margin-bottom:20px;", :id => 'main_image'), main.url(:gallery), :rel => "gallery_group" %>
     <% else %>
       <p>Brak zdjec produktu spelniajacego podane kryteria.</p>
     <% end %>
@@ -51,7 +51,7 @@
 <div>
   <% photos.each do |picture| %>
     <% #= image_tag(picture.url(:thumb), :class => "shadow-large", :alt => "", :style => "margin-right:10px;cursor:pointer;", :title => picture.url(:content), :onclick => "$('#main_image').hide();$('#main_image')[0].src = this.title;$('#main_image').fadeIn()") %>
-    <%= link_to image_tag(picture.url(:thumb), :class => "shadow-large", :alt => "", :style => "margin-right:10px;cursor:pointer;", :title => picture.url(:content)), picture.url(:original), :rel => "gallery_group" %>
+    <%= link_to image_tag(picture.url(:thumb), :class => "shadow-large", :alt => "", :style => "margin-right:10px;cursor:pointer;", :title => picture.url(:content)), picture.url(:gallery), :rel => "gallery_group" %>
   <% end %>
 </div>
 <hr />

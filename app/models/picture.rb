@@ -1,6 +1,6 @@
 require 'mime/types'
 class Picture < Asset
-
+Paperclip::Interpolations
   # === List of columns ===
   #   id                : integer 
   #   data_file_name    : string 
@@ -14,23 +14,27 @@ class Picture < Asset
   #   created_at        : datetime 
   #   updated_at        : datetime 
   # =======================
+
   belongs_to :assetable, :polymorphic => true
   #has_many :product_option_pictures, :dependent => :destroy
   has_many :option_combination_pictures, :dependent => :destroy
+
   has_attached_file :data,
                     :url  => "/assets/pictures/:id/:style_:basename.:extension",
                     :path => ":rails_root/public/assets/pictures/:id/:style_:basename.:extension",
                     :processors => [:watermark],
-	                  :styles => { 
+                    :styles => proc { |attachment|
+                               {
                                  :flow => '520x292#',
                                  :gallery => {
                                            :geometry => '1000x1000>',
                                            :watermark_path => "#{RAILS_ROOT}/public/images/romiq_watermark.png",
                                            :watermark_path_2 => "#{RAILS_ROOT}/public/images/archon_watermark.png",
-                                           :dissolve => '35%'},
+                                           :watermark => attachment.instance.assetable && attachment.instance.assetable.respond_to?(:watermark) && attachment.instance.assetable.watermark,
+                                           :watermark_2 => attachment.instance.assetable && attachment.instance.assetable.respond_to?(:watermark_2) && attachment.instance.assetable.watermark_2,
+                                           :dissolve => '45%'},
                                  :content => '356x200#',
-                                 :thumb => '100x100#' }
-	
+      :thumb => '100x100#' }}
 	validates_attachment_size :data, :less_than=>2.megabytes
   validates_attachment_presence :data
   validates_attachment_content_type :data, :content_type => ['image/jpeg', 'image/pjpeg', 'image/jpg']

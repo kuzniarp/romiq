@@ -1,11 +1,13 @@
 module Paperclip
   class Watermark < Processor
     # Handles watermarking of images that are uploaded.
-    attr_accessor :current_geometry, :target_geometry, :format, :whiny, :convert_options, :watermark_path, :overlay, :position, :dissolve, :watermark_path_2, :position_2
-
+    attr_accessor :current_geometry, :target_geometry, :format, :whiny, :convert_options, :watermark_path, :overlay, :position, :dissolve, :watermark_path_2, :position_2, :watermark, :watermark_2
+    LOGGER = Logger.new(File.join(RAILS_ROOT, 'log', 'watermark.log'))
     def initialize file, options = {}, attachment = nil
        super
        geometry = options[:geometry]
+      LOGGER.debug options[:watermark]
+      LOGGER.debug options[:watermark_2]
        @file = file
        @crop = geometry[-1,1] == '#'
        @target_geometry = Geometry.parse geometry
@@ -15,6 +17,8 @@ module Paperclip
        @format = options[:format]
        @watermark_path = options[:watermark_path]
        @watermark_path_2 = options[:watermark_path_2]
+       @watermark = options[:watermark]
+       @watermark_2 = options[:watermark_2]
        @position = options[:position].nil? ? "NorthEast" : options[:position]
        @position_2 = options[:position_2].nil? ? "SouthWest" : options[:position_2]
        @overlay = options[:overlay].nil? ? true : false
@@ -51,7 +55,7 @@ module Paperclip
           raise PaperclipError, "There was an error resizing and cropping #{@basename}" if @whiny
         end
 
-        if watermark_path
+        if watermark && watermark_path
           command = "composite"
           params = %W[-dissolve #{@dissolve} -gravity #{@position} #{watermark_path} #{tofile(dst)}]
           params << tofile(dst)
@@ -62,7 +66,7 @@ module Paperclip
           end
         end
 
-        if watermark_path_2
+        if watermark_2 && watermark_path_2
           command = "composite"
           params = %W[-dissolve #{@dissolve} -gravity #{@position_2} #{watermark_path_2} #{tofile(dst)}]
           params << tofile(dst)

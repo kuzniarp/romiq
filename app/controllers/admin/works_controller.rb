@@ -64,10 +64,29 @@ class Admin::WorksController < ApplicationController
       if @work.update_attributes(params[:work])
         flash[:notice] = 'Work was successfully updated.'
         format.html { redirect_to(admin_works_url) }
+        format.js { render :text => '', :status => :ok }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
+        format.js { render :text => '', :status => :unprocessable_entity }
         format.xml  { render :xml => @work.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_pictures
+    success = false
+    @work = Work.find_by_id(params[:id])
+    begin
+      @work.pictures.each{|picture| picture.data.reprocess!}    
+      success = true
+    rescue
+    end
+    respond_to do |format|
+      if success
+        format.js { render :text => '', :status => :ok }
+      else
+        format.js { render :text => '', :status => :unprocessable_entity }
       end
     end
   end
