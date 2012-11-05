@@ -63,6 +63,7 @@ ActionController::Routing::Routes.draw do |map|
   map.works_category '/galeria/:category_id', :controller => 'works', :action => 'index'
   map.product '/produkty/:id', :controller => 'products', :action => 'show', :requirements => {:id => /\d+/}
   map.products '/produkty', :controller => 'products', :action => 'index'
+  map.resources :products, :only => [], :collection => {:change_view => :get, :change_order => :get}
   map.products_category '/produkty/:category_id', :controller => 'products', :action => 'index'
   map.resources :offers, :as => "promocje"
   map.resources :posts

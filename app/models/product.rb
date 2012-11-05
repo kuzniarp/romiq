@@ -16,8 +16,12 @@ class Product < ActiveRecord::Base
 
   named_scope :for_categories, lambda {|categories| {:conditions => ["categories.id in (?)", categories.map(&:id)], :include => :categories}}
 
-  cattr_reader :per_page
-  @@per_page = 10
+#  cattr_reader :per_page
+#  @@per_page = 10
+
+  ALLOWED_VIEWS = {'short_view' => 50, 'medium_view' => 30, 'long_view' => 15}
+
+  ALLOWED_ORDERS = {'date' => 'products.created_at desc', 'name' => 'products.name'}
 
   def self.newest limit=1
     active.find(:all, :limit => limit, :order => "created_at desc")
