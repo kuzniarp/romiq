@@ -28,6 +28,6 @@
   $(document).ready(function() {
     initMenu();
     $('p.active').parents('li').each(function(){$(this).children('a').siblings().not('a').show();})
-    $('p.small.active').parents('li').children('a.toggle').each(function(){ this.toggleClassName('expanded');})
+    $('p.small.active').parents('li').children('a.cat').each(function(){ this.toggleClassName('expanded');})
   });
 <% end %>
