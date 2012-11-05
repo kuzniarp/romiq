@@ -27,12 +27,12 @@ class ProductsController < ApplicationController
 
   def change_view
     cookies[:products_index_view] = params[:view] if Product::ALLOWED_VIEWS.keys.include?(params[:view])
-    redirect_to :action => :index
+    redirect_to :params => params.merge(:action => :index, :view => nil)
   end
 
   def change_order
     cookies[:products_index_order] = params[:order] if Product::ALLOWED_ORDERS.keys.include?(params[:order])
-    redirect_to :action => :index
+    redirect_to :params => params.merge(:action => :index, :order => nil)
   end
 
   protected

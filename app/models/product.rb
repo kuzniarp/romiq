@@ -19,7 +19,7 @@ class Product < ActiveRecord::Base
 #  cattr_reader :per_page
 #  @@per_page = 10
 
-  ALLOWED_VIEWS = {'short_view' => 50, 'medium_view' => 30, 'long_view' => 15}
+  ALLOWED_VIEWS = {'short_view' => 50, 'medium_view' => 30, 'long_view' => 10}
 
   ALLOWED_ORDERS = {'date' => 'products.created_at desc', 'name' => 'products.name'}
 
