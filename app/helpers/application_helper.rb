@@ -31,7 +31,12 @@ module ApplicationHelper
     list = ''
     roots = model.roots
     roots.each do |root|
-      list += content_tag(:ul, content_tag(:li, link_to('&nbsp;','#',:class=>'toggle'+(' active' if active == root).to_s) + link_to_if(active != root, root.name, (admin ? edit_admin_category_path(root) : items_category_path(root)), :class => ('active' if active == root)) + (link_to(" "+image_tag("icons/plus.png"), new_admin_category_path(:parent_id => root.id, :type => model), :title => "Dodaj podkategorie") if admin).to_s + content_tag(:p, root.items.map{|item| link_to_if(active_item != item, item.name, item_path(item))}.join('<br />'), :class => "small"+(" active" if root.items.include?(active_item)).to_s)+ subcategory_list(root, admin, active, active_item)), :class => 'root')
+      list += content_tag(:ul, content_tag(:li, 
+                                           (root.children.present? ? link_to('&nbsp;','#',:class=>'toggle'+(' active' if active == root).to_s) : '<div style="float:left;width:13px;">&nbsp;</div>') + 
+                                           link_to_if(active != root, root.name, (admin ? edit_admin_category_path(root) : items_category_path(root)), :class => ('active' if active == root)) + 
+                                           (link_to(" "+image_tag("icons/plus.png"), new_admin_category_path(:parent_id => root.id, :type => model), :title => "Dodaj podkategorie") if admin).to_s + 
+#                                           content_tag(:p, root.items.map{|item| link_to_if(active_item != item, item.name, item_path(item))}.join('<br />'), :class => "small"+(" active" if root.items.include?(active_item)).to_s) + 
+                                           subcategory_list(root, admin, active, active_item)), :class => 'root')
     end
     list += link_to("Dodaj kategorie glowna", new_admin_category_path(:type => model)) if admin
     list
@@ -40,7 +45,12 @@ module ApplicationHelper
   def subcategory_list root, admin, active, active_item
     list = ''
     root.children.each do |cat|
-      list += content_tag(:li, link_to('&nbsp;','#',:class=>'toggle'+(' active' if active == cat).to_s) + link_to_if(active != cat, cat.name, (admin ? edit_admin_category_path(cat) : items_category_path(cat)), :class => ('active' if active == cat)) + (link_to(" "+image_tag("icons/plus.png"), new_admin_category_path(:parent_id => cat.id, :type => cat.class), :title => "Dodaj podkategorie") if admin).to_s + content_tag(:p, cat.items.map{|item| link_to_if(active_item != item, item.name, item_path(item))}.join('<br />'), :class => "small"+(" active" if cat.items.include?(active_item)).to_s) + subcategory_list(cat, admin, active, active_item))
+      list += content_tag(:li, 
+                          (cat.children.present? ? link_to('&nbsp;','#',:class=>'toggle'+(' active' if active == cat).to_s) : '<div style="float:left;width:13px;">&nbsp;</div>') + 
+                          link_to_if(active != cat, cat.name, (admin ? edit_admin_category_path(cat) : items_category_path(cat)), :class => ('active' if active == cat)) + 
+                          (link_to(" "+image_tag("icons/plus.png"), new_admin_category_path(:parent_id => cat.id, :type => cat.class), :title => "Dodaj podkategorie") if admin).to_s + 
+#                          content_tag(:p, cat.items.map{|item| link_to_if(active_item != item, item.name, item_path(item))}.join('<br />'), :class => "small"+(" active" if cat.items.include?(active_item)).to_s) + 
+                          subcategory_list(cat, admin, active, active_item))
     end  
     #	  list += content_tag(:li, link_to("Nowa", new_admin_category_path)) if admin
     list.present? ? content_tag(:ul, list) : ''
