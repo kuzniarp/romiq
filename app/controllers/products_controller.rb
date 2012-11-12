@@ -51,6 +51,6 @@ class ProductsController < ApplicationController
 
   def set_current_order
     current_order = cookies[:products_index_order]
-    @current_order = current_order.present? && Product::ALLOWED_ORDERS.keys.include?(current_order) ? current_order : 'products.created_at desc' 
+    @current_order = current_order.present? && Product::ALLOWED_ORDERS.keys.include?(current_order) ? current_order : 'date' 
   end
 end
