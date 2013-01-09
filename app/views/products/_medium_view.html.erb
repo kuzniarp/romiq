@@ -1,5 +1,5 @@
     <% product = medium_view %>
     <div class="grid_2" style="width:155px;height:200px;text-align:center;">
-      <%= link_to(image_tag(product.image.url(:thumb), :class => "shadow-large"), product_path(product)) if product.image %>
+      <%= link_to(image_tag(product.image.url(:thumb), :class => "shadow-large", :width => 120), product_path(product)) if product.image %>
       <h6><%= link_to product.name, product_path(product) %></h6>
     </div>

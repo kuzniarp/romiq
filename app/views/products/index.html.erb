@@ -5,14 +5,14 @@
 <div class="grid_9" style="margin:0;">
   <div style="float:left;">
     Sortuj wg:
-    <%= link_to_if get_items_order != 'date', 'Data dodania', change_order_products_path(params.merge(:order => 'date')) %> |
-    <%= link_to_if get_items_order != 'name', 'Nazwa', change_order_products_path(params.merge(:order => 'name')) %>
+    <%= link_to_if get_items_order != 'date', 'Data dodania', change_order_products_path(:order => 'date', :view => params[:view]) %> |
+    <%= link_to_if get_items_order != 'name', 'Nazwa', change_order_products_path(:order => 'name', :view => params[:view]) %>
   </div>
   <div style="float:right;">
     Widok:
-    <%= link_to_if get_items_view != 'short_view', 'Lista', change_view_products_path(params.merge(:view => 'short_view')) %> |
-    <%= link_to_if get_items_view != 'medium_view', 'Zdjęcie', change_view_products_path(params.merge(:view => 'medium_view')) %> |
-    <%= link_to_if get_items_view != 'long_view', 'Opis', change_view_products_path(params.merge(:view => 'long_view')) %>
+    <%= link_to_if get_items_view != 'short_view', 'Lista', change_view_products_path(:view => 'short_view', :order => params[:order]) %> |
+    <%= link_to_if get_items_view != 'medium_view', 'Zdjęcie', change_view_products_path(:view => 'medium_view', :order => params[:order]) %> |
+    <%= link_to_if get_items_view != 'long_view', 'Opis', change_view_products_path(:view => 'long_view', :order => params[:order]) %>
   </div>
 <div class="clear"></div>
 <hr />
