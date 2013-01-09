@@ -37,7 +37,7 @@ Paperclip::Interpolations
       :thumb => '100x100#' }}
 	validates_attachment_size :data, :less_than=>2.megabytes
   validates_attachment_presence :data
-  validates_attachment_content_type :data, :content_type => ['image/jpeg', 'image/pjpeg', 'image/jpg']
+#  validates_attachment_content_type :data, :content_type => ['image/jpeg', 'image/pjpeg', 'image/jpg']
   
   # Fix the mime types. Make sure to require the mime-types gem
 

@@ -29,6 +29,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
 
   config.gem 'will_paginate', :version => '~> 2.3.11'
+  config.gem 'rake', :version => '0.8.7'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -61,6 +62,11 @@ Rails::Initializer.run do |config|
     :secret      => 'c5f9be524f1a5e57af0a263309940254a6c5e8ccbbee6068248d57ffb1883501a91602605700578c6326d58baae8a112518eafc4719ce56bfad2b659caf193d5'
   }
 
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.sendmail_settings = {
+    :openssl_verify_mode  => 'none'
+  }
+  
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
   # (create the session table with "rake db:sessions:create")

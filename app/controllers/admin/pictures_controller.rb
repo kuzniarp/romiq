@@ -11,7 +11,7 @@ class Admin::PicturesController < ApplicationController
       if @picture.save
         render :partial => 'shared/picture', :object => @picture
       else
-        render :text => "error"
+        render :text => @picture.errors.map{|e| e.join(' ').humanize}.join(' ')  
       end
     else
       @picture = Picture.new params[:picture]
