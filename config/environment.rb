@@ -63,8 +63,9 @@ Rails::Initializer.run do |config|
   }
 
   config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.sendmail_settings = {
-    :openssl_verify_mode  => 'none'
+  config.action_mailer.smtp_settings = {
+        :openssl_verify_mode  => 'none',
+        :enable_starttls_auto => false
   }
   
   # Use the database for sessions instead of the cookie-based default,
